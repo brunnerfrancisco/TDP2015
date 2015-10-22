@@ -4,8 +4,8 @@ package Principal;
  */
 public class Juego 
 {
-	protected int Puntaje;
-	protected int Reloj;
+	protected int puntaje;
+	protected int reloj;
 //	protected PositionList<Enemigo> listaEnemigos;
 	protected Bomberman jugador;
 	protected Terreno terreno;
@@ -15,16 +15,14 @@ public class Juego
 	 */
 	public Juego()
 	{
-		//pasar terreno
+		puntaje= 0;
+		terreno= new Terreno();
+		jugador= new Bomberman(terreno);
 	}
 	
-	/**
-	 * Método responsable de crear el terreno de juego.
-	 */
-	public void crearTerreno()
+	public Bomberman getBomberman()
 	{
-		
+		return jugador;
 	}
-	
 	
 }

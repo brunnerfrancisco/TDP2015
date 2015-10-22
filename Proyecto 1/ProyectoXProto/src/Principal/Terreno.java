@@ -15,7 +15,16 @@ public class Terreno
 	 */
 	public Terreno()
 	{
-		matriz= new Celda[32][32];
+		matriz= new Celda[34][34];
+//		for (int x = 0; i < 34 ; i++)
+//		{
+//			for (int j = 0; j < 34; j++)
+//			{
+//				
+//			}
+//			}
+//		}
+		
 	}
 
 	/**

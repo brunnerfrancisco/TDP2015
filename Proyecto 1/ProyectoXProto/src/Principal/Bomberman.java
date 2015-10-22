@@ -110,7 +110,7 @@ public class Bomberman
 	{
 		if(cantBombasActuales>0)
 		{
-			miBomba.explotar(posX,posY);			
+			miBomba.explotar(posX,posY);	
 		}
 	}
 	
@@ -138,5 +138,6 @@ public class Bomberman
 		cantBombasSimultaneas*=2;
 	}
 	
+
 	
 }
