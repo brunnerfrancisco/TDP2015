@@ -6,6 +6,7 @@ package Principal;
  */
 public abstract class ElementoEnCelda 
 {
+
 	public abstract void avanzar(Bomberman b);
 	public abstract void avanzar(Enemigo e);
 	public abstract void destruirse();

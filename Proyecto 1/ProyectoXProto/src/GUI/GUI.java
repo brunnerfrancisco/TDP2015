@@ -1,4 +1,4 @@
-package GIU;
+package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Principal.Bomberman;
 import Principal.Juego;
 
 import java.awt.FlowLayout;
@@ -24,7 +25,7 @@ import javax.swing.ImageIcon;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
 
-public class miGUI extends JFrame{
+public class GUI extends JFrame{
 
 	private JPanel contentPane;
 	private JLabel lblNewLabel, bomba;
@@ -38,7 +39,7 @@ public class miGUI extends JFrame{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					miGUI frame = new miGUI();
+					GUI frame = new GUI();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,9 +51,9 @@ public class miGUI extends JFrame{
 	/**
 	 * Create the frame.
 	 */
-	public miGUI() {
+	public GUI() {
 		
-		juego= new Juego();
+		juego= new Juego(this);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 507, 386);
@@ -113,24 +114,25 @@ public class miGUI extends JFrame{
 		{
 				@Override
 				public void keyPressed(KeyEvent e) {
-					// TODO Auto-generated method stub
-					
+					// TODO Auto-genera tedmethod stub
 					switch(e.getKeyCode()) {
-					
+					//Bomberman bomberman = juego.getBomberman();
 					case KeyEvent.VK_UP:
-						lblNewLabel.setBounds(lblNewLabel.getX(), lblNewLabel.getY()-10, lblNewLabel.getWidth(), lblNewLabel.getHeight());
+					// LO PONGO EN AVANZAR DE BOMB	lblNewLabel.setBounds(lblNewLabel.getX(), lblNewLabel.getY()-10, lblNewLabel.getWidth(), lblNewLabel.getHeight());
+						//bomberman.avanzar(bomberman.getX(), bomberman.getY()+1);
+						juego.moverArriba
 						break;
 						
 					case KeyEvent.VK_DOWN:	
-						lblNewLabel.setBounds(lblNewLabel.getX(), lblNewLabel.getY()+10, lblNewLabel.getWidth(), lblNewLabel.getHeight());
+						// LO PONGO EN AVANZAR DE BOMB	lblNewLabel.setBounds(lblNewLabel.getX(), lblNewLabel.getY()+10, lblNewLabel.getWidth(), lblNewLabel.getHeight());
 						break;
 						
 					case KeyEvent.VK_RIGHT:	
-						lblNewLabel.setBounds(lblNewLabel.getX()+10, lblNewLabel.getY(), lblNewLabel.getWidth(), lblNewLabel.getHeight());
+						// LO PONGO EN AVANZAR DE BOMB	lblNewLabel.setBounds(lblNewLabel.getX()+10, lblNewLabel.getY(), lblNewLabel.getWidth(), lblNewLabel.getHeight());
 						break;
 						
 					case KeyEvent.VK_LEFT:	
-						lblNewLabel.setBounds(lblNewLabel.getX()-10, lblNewLabel.getY(), lblNewLabel.getWidth(), lblNewLabel.getHeight());
+						// LO PONGO EN AVANZAR DE BOMB	lblNewLabel.setBounds(lblNewLabel.getX()-10, lblNewLabel.getY(), lblNewLabel.getWidth(), lblNewLabel.getHeight());
 						break;
 					
 

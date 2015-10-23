@@ -85,15 +85,14 @@ public class Bomba extends ElementoEnCelda
 	{
 		int i=x;
 		boolean destrui=true;
-		Celda celda=null;
-		
+		ElementoEnCelda elementoCelda;
 		while (i<=(x+alcance)&&(destrui))
 		{
-//			Celda celda=terreno.obtenerCelda(i, y).obtenerElem();
-			if(celda!=null)
+			elementoCelda =terreno.obtenerCelda(i, y).obtenerElem();
+			if(elementoCelda!=null)
 			{
-//				celda.destruirse();
-				if(celda!=null)
+				elementoCelda.destruirse();
+				if(elementoCelda!=null)
 				{
 					destrui=false;
 				}
@@ -105,11 +104,11 @@ public class Bomba extends ElementoEnCelda
 		destrui=true;
 		while (i>=(x-alcance)&&(destrui))
 		{
-//			Celda celda=terreno.obtenerCelda(i, y).obtenerElem();
-			if(celda!=null)
+			elementoCelda =terreno.obtenerCelda(i, y).obtenerElem();
+			if(elementoCelda!=null)
 			{
-//				celda.destruirse();
-				if(celda!=null)
+				elementoCelda.destruirse();
+				if(	elementoCelda!=null)
 				{
 					destrui=false;
 				}
@@ -120,11 +119,11 @@ public class Bomba extends ElementoEnCelda
 		destrui=true;
 		while (j<=(y+alcance)&&(destrui))
 		{
-//			Celda celda=terreno.obtenerCelda(x, j).obtenerElem();
-			if(celda!=null)
+				elementoCelda=terreno.obtenerCelda(x, j).obtenerElem();
+			if(	elementoCelda!=null)
 			{
-//				celda.destruirse();
-				if(celda!=null)
+				elementoCelda.destruirse();
+				if(	elementoCelda!=null)
 				{
 					destrui=false;
 				}
@@ -135,11 +134,11 @@ public class Bomba extends ElementoEnCelda
 		destrui=true;
 		while (j>=(y-alcance)&&(destrui))
 		{
-//			Celda celda=terreno.obtenerCelda(x, j).obtenerElem();
-			if(celda!=null)
+			elementoCelda=terreno.obtenerCelda(x, j).obtenerElem();
+			if(	elementoCelda!=null)
 			{
-//				celda.destruirse();
-				if(celda!=null)
+				elementoCelda.destruirse();
+				if(elementoCelda!=null)
 				{
 					destrui=false;
 				}
