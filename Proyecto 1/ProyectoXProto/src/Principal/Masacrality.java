@@ -1,5 +1,7 @@
 package Principal;
 
+import javax.swing.ImageIcon;
+
 /**
  * Clase que modela el power-up de mas poderoso, el cual le brinda al jugador varias 
  * cualidades, entre ellas, ser inmortal por un tiempo limitado.
@@ -20,5 +22,11 @@ public class Masacrality extends PowerUps
 	public void avanzar(Bomberman b)
 	{
 		
+	}
+
+	@Override
+	public ImageIcon getImagen() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

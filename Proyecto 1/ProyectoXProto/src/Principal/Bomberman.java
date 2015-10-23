@@ -1,10 +1,13 @@
 package Principal;
+
+import javax.swing.ImageIcon;
+
 /**
  * Clase Bomberman que maneja toda la lógica del jugador.
  * @author Brunner Francisco, Vercelli Franco, Volpe Leandro.
  *
  */
-public class Bomberman 
+public class Bomberman extends ElementoEnCelda
 {
 	protected int velocidad;
 	protected int cantBombasSimultaneas;
@@ -16,6 +19,7 @@ public class Bomberman
 	protected boolean estaVivo;
 	protected Bomba miBomba;
 	protected Terreno miTerreno;
+	protected ImageIcon imagen;
 	
 	/**
 	 * Contructor de la clase, crea una nueva instancia de la misma.
@@ -31,6 +35,7 @@ public class Bomberman
 		cantBombasActuales=1;
 		miTerreno=t;
 		miBomba=new Bomba(t);
+		imagen = new ImageIcon(getClass().getResource("/images/bomberman.jpg"));
 		
 	}
 	
@@ -49,7 +54,7 @@ public class Bomberman
 	 */
 	public void setY(int y)
 	{
-		posX=y;
+		posY=y;
 	}
 	
 	/**
@@ -100,7 +105,7 @@ public class Bomberman
 	
 	public void avanzar(int x, int y)
 	{
-		miTerreno.obtenerCelda(x,y).avanzar(this);	
+		miTerreno.getCelda(x,y).avanzar(this);	
 	}
 	
 	/**
@@ -136,6 +141,30 @@ public class Bomberman
 	public void duplicarCantBombas()
 	{
 		cantBombasSimultaneas*=2;
+	}
+
+	@Override
+	public void avanzar(Bomberman b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void avanzar(Enemigo e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void destruirse() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public ImageIcon getImagen() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 

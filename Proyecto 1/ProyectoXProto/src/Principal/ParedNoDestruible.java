@@ -1,10 +1,12 @@
 package Principal;
 
+import javax.swing.ImageIcon;
+
 public class ParedNoDestruible extends Pared {
-	
+	protected ImageIcon imagen;
 	public ParedNoDestruible()
 	{
-		
+		imagen = new ImageIcon(getClass().getResource("/images/NoTransitable.jpg"));
 	}
 
 	@Override
@@ -23,5 +25,10 @@ public class ParedNoDestruible extends Pared {
 	public void destruirse() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public ImageIcon getImagen() {
+		return imagen;
 	}
 }

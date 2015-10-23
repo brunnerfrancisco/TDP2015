@@ -1,5 +1,7 @@
 package Principal;
 
+import javax.swing.ImageIcon;
+
 public class ParedDestruible extends Pared {
 	public ParedDestruible()
 	{
@@ -15,12 +17,17 @@ public class ParedDestruible extends Pared {
 		{
 			b.setX(this.getCelda().getPosX());
 			b.setY(this.getCelda().getPosY());
-			muevo en la grafica 1*32 para arriba
+		//	muevo en la grafica 1*32 para arriba
 		}
 	}
 	@Override
 	public void avanzar(Enemigo e) {
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public ImageIcon getImagen() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -1,4 +1,7 @@
 package Principal;
+
+import javax.swing.ImageIcon;
+
 /**
  * Clase que maneja la lógica de las bombas.
  * @author Brunner Francisco, Vercelli Franco, Volpe Leandro.
@@ -11,7 +14,8 @@ public class Bomba extends ElementoEnCelda
 	protected int posX;
 	protected int posY;
 	protected Terreno terreno;
-	
+	protected ImageIcon imagen;
+	 
 	/**
 	 * Contructor de la clase, crea una nueva instancia de la misma.
 	 */
@@ -22,6 +26,7 @@ public class Bomba extends ElementoEnCelda
 		alcance=1;
 		tiempo=2500;
 		terreno=t;
+		imagen = new ImageIcon(getClass().getResource("/images/bomba.jpg"));
 	}
 	
 	/**
@@ -88,7 +93,7 @@ public class Bomba extends ElementoEnCelda
 		ElementoEnCelda elementoCelda;
 		while (i<=(x+alcance)&&(destrui))
 		{
-			elementoCelda =terreno.obtenerCelda(i, y).obtenerElem();
+			elementoCelda =terreno.getCelda(i, y).obtenerElem();
 			if(elementoCelda!=null)
 			{
 				elementoCelda.destruirse();
@@ -104,7 +109,7 @@ public class Bomba extends ElementoEnCelda
 		destrui=true;
 		while (i>=(x-alcance)&&(destrui))
 		{
-			elementoCelda =terreno.obtenerCelda(i, y).obtenerElem();
+			elementoCelda =terreno.getCelda(i, y).obtenerElem();
 			if(elementoCelda!=null)
 			{
 				elementoCelda.destruirse();
@@ -119,7 +124,7 @@ public class Bomba extends ElementoEnCelda
 		destrui=true;
 		while (j<=(y+alcance)&&(destrui))
 		{
-				elementoCelda=terreno.obtenerCelda(x, j).obtenerElem();
+				elementoCelda=terreno.getCelda(x, j).obtenerElem();
 			if(	elementoCelda!=null)
 			{
 				elementoCelda.destruirse();
@@ -134,7 +139,7 @@ public class Bomba extends ElementoEnCelda
 		destrui=true;
 		while (j>=(y-alcance)&&(destrui))
 		{
-			elementoCelda=terreno.obtenerCelda(x, j).obtenerElem();
+			elementoCelda=terreno.getCelda(x, j).obtenerElem();
 			if(	elementoCelda!=null)
 			{
 				elementoCelda.destruirse();
@@ -153,6 +158,11 @@ public class Bomba extends ElementoEnCelda
 	public void destruirse()
 	{
 		
+	}
+
+	@Override
+	public ImageIcon getImagen() {
+		return imagen;
 	}
 	
 }

@@ -1,5 +1,7 @@
 package Principal;
 
+import javax.swing.ImageIcon;
+
 /**
  * Clase que modela el power-up de la cantidad de bombas simultaneas que puede poner el jugador.
  * @author Brunner Francisco, Vercelli Franco, Volpe Leandro.
@@ -19,5 +21,11 @@ public class Bombality extends PowerUps
 	public void avanzar(Bomberman b)
 	{
 		
+	}
+
+	@Override
+	public ImageIcon getImagen() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

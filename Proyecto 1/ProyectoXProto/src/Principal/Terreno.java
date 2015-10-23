@@ -25,9 +25,9 @@ public class Terreno
 			matriz[i][33] = new Celda(i,33, new ParedNoDestruible());
 		}
 		
-		for (int i = 0; i < 34 ; i++)
+		for (int i = 1; i < 33 ; i++)
 		{
-			for (int j = 0; j < 34; j++)
+			for (int j = 1; j < 33; j++)
 			{	
 				if ((i % 2 == 0) && (j % 2 == 0))
 					matriz[i][j] = new Celda(i,j,new ParedNoDestruible());
@@ -44,9 +44,11 @@ public class Terreno
 	 * @param y, de tipo entero
 	 * @return Celda
 	 */
-	public Celda obtenerCelda(int x, int y)
+	public Celda getCelda(int x, int y)
 	{
 		return matriz[x][y];
 	}
+	
+	
 	
 }
