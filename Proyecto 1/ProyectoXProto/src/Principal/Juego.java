@@ -1,5 +1,8 @@
 
 package Principal;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 import GUI.GUI;
 
 /*
@@ -39,28 +42,84 @@ public class Juego
 	public void moverBombermanUP() {
 		jugador.avanzar(jugador.getX(), jugador.getY()-1);
 		System.out.println("Avanzarde Juego pos X" + jugador.getX()+ " y pos y" + jugador.getY());
+		actualizarGUI();
 	}
 	
 	public void moverBombermanDOWN() {
 		jugador.avanzar(jugador.getX(), jugador.getY()+1);
 		System.out.println("Avanzarde Juego pos X" + jugador.getX()+ " y pos y" + jugador.getY());
+		actualizarGUI();
 		
 	}
 	public void moverBombermanRIGHT() {
 		jugador.avanzar(jugador.getX()+1, jugador.getY());
 		actualizarGUI();  //repaint esta denytro de actualizar GUI
-		gui.repaint();
+	
 		System.out.println("Avanzarde Juego pos X" + jugador.getX()+ " y pos y" + jugador.getY());
 		
 	}
 	public void moverBombermanLEFT() {
 		jugador.avanzar(jugador.getX()-1, jugador.getY());
 		System.out.println("Avanzarde Juego pos X " + jugador.getX()+ " y pos y " + jugador.getY());
+		actualizarGUI(); 
 	}
 	
 	public void actualizarGUI()
+	{	
+		ImageIcon imagenCelda;
+		for (int i = 0; i < 33 ; i++)
+		{
+			for (int j = 0; j < 33; j++)
+			{
+				ElementoEnCelda elementoCelda= terreno.getCelda(i, j).obtenerElem();
+				if (elementoCelda == null)
+				{
+					 imagenCelda= new ImageIcon(getClass().getResource("/images/Transitable.jpg"));
+				}
+				else
+				{
+					imagenCelda = elementoCelda.getImagen();
+				}
+				JLabel labelActual = gui.getLabelEnMatriz(i,j);
+				labelActual.setIcon(imagenCelda);
+				labelActual.setBounds((i*22),(j*22),22,22);
+				
+				gui.getContentPane().add(labelActual);
+			}
+		}
+		gui.getContentPane().repaint();
+	}
+
+	public void ponerBomba() {
+		jugador.ponerBomba();
+		actualizarGUI();
+		(new Tiempo(this,jugador,gui)).run();
+	
+	}
+	private static class Tiempo extends Thread
 	{
-		// hay que hacer una matriz de JLabel en la GUI
+		private Bomberman bomberman;
+		private Juego juego;
+		public Tiempo(Juego g, Bomberman b,GUI gu)
+		{
+			bomberman = b;
+			juego = g;
+		}
+		public void run()
+		{
+			try {
+				sleep(3000);
+				Bomba miBomba = bomberman.getBomba();
+				miBomba.explotar(miBomba.getX(),miBomba.getY());
+				juego.actualizarGUI();
+				
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+		}
 	}
 	
 }

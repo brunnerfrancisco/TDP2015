@@ -18,7 +18,7 @@ public class Bomberman extends ElementoEnCelda
 	protected int posY;
 	protected boolean estaVivo;
 	protected Bomba miBomba;
-	protected Terreno miTerreno;
+	protected Terreno terreno;
 	protected ImageIcon imagen;
 	
 	/**
@@ -33,7 +33,7 @@ public class Bomberman extends ElementoEnCelda
 		puntaje=0;
 		cantBombasSimultaneas=1;
 		cantBombasActuales=1;
-		miTerreno=t;
+		terreno=t;
 		miBomba=new Bomba(t);
 		imagen = new ImageIcon(getClass().getResource("/images/bomberman.jpg"));
 		
@@ -105,7 +105,7 @@ public class Bomberman extends ElementoEnCelda
 	
 	public void avanzar(int x, int y)
 	{
-		miTerreno.getCelda(x,y).avanzar(this);	
+		terreno.getCelda(x,y).avanzar(this);	
 	}
 	
 	/**
@@ -115,10 +115,15 @@ public class Bomberman extends ElementoEnCelda
 	{
 		if(cantBombasActuales>0)
 		{
-			miBomba.explotar(posX,posY);	
+			terreno.getCelda(posX, posY).agregarElementoACelda(miBomba);
+			cantBombasActuales--;
 		}
 	}
 	
+	public Bomba getBomba()
+	{
+		return miBomba;
+	}
 	/**
 	 * Método que incrementa la velocidad de movimilidad del jugador.
 	 */
@@ -163,8 +168,7 @@ public class Bomberman extends ElementoEnCelda
 
 	@Override
 	public ImageIcon getImagen() {
-		// TODO Auto-generated method stub
-		return null;
+		return imagen;
 	}
 	
 

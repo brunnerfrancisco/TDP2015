@@ -8,20 +8,21 @@ public class Celda
 {
 	protected int posX;
 	protected int posY;
-	protected Terreno ubicacion;
+	protected Terreno terreno;
 	protected ElementoEnCelda [] elementos;
 	protected int cantElementos;
 	
 	/**
 	 * Constructor de la clase, crea una nueva instancia de la misma.
 	 */
-	public Celda (int x, int y, ElementoEnCelda elem)
+	public Celda (int x, int y, ElementoEnCelda elem,Terreno t)
 	{
 		posX=x;
 		posY=y;
 		elementos = new ElementoEnCelda[5];
 		elementos[0] = elem;
 		cantElementos = 0;
+		terreno = t;
 	}
 	
 	public ElementoEnCelda obtenerElem()
@@ -54,13 +55,15 @@ public class Celda
 	
 	public void avanzar(Bomberman b)
 	{
-		if (elementos[0] == null) // celda vacia
+		if (obtenerElem() == null) // celda vacia
 			{
+				int posXAnteriorBomberman = b.getX();
+				int posYAnteriorBomberman = b.getY();
 				b.setX(posX);
 				b.setY(posY);
+				this.agregarElementoACelda(b);
+				terreno.getCelda(posXAnteriorBomberman, posYAnteriorBomberman).eliminarElementoEnCelda();;
 				System.out.println(this.posX+ " y pos y" + posY);
-				
-				//muevo en la grafica 1*32 para arriba
 			}
 		else
 		{

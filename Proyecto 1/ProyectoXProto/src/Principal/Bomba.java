@@ -1,13 +1,14 @@
 package Principal;
 
 import javax.swing.ImageIcon;
+import Principal.Juego;
 
 /**
  * Clase que maneja la lógica de las bombas.
  * @author Brunner Francisco, Vercelli Franco, Volpe Leandro.
  *
  */
-public class Bomba extends ElementoEnCelda
+public class Bomba extends ElementoEnCelda implements Runnable
 {
 	protected int tiempo;
 	protected int alcance;
@@ -26,7 +27,7 @@ public class Bomba extends ElementoEnCelda
 		alcance=1;
 		tiempo=2500;
 		terreno=t;
-		imagen = new ImageIcon(getClass().getResource("/images/bomba.jpg"));
+		imagen = new ImageIcon(getClass().getResource("/images/bomba.gif"));
 	}
 	
 	/**
@@ -88,69 +89,77 @@ public class Bomba extends ElementoEnCelda
 	 */
 	public void explotar(int x, int y)
 	{
-		int i=x;
-		boolean destrui=true;
-		ElementoEnCelda elementoCelda;
-		while (i<=(x+alcance)&&(destrui))
-		{
-			elementoCelda =terreno.getCelda(i, y).obtenerElem();
-			if(elementoCelda!=null)
-			{
-				elementoCelda.destruirse();
-				if(elementoCelda!=null)
-				{
-					destrui=false;
-				}
-			}
-			
-			i++;
-		}
-		i=x;
-		destrui=true;
-		while (i>=(x-alcance)&&(destrui))
-		{
-			elementoCelda =terreno.getCelda(i, y).obtenerElem();
-			if(elementoCelda!=null)
-			{
-				elementoCelda.destruirse();
-				if(	elementoCelda!=null)
-				{
-					destrui=false;
-				}
-			}
-			i--;
-		}
-		int j=y;
-		destrui=true;
-		while (j<=(y+alcance)&&(destrui))
-		{
-				elementoCelda=terreno.getCelda(x, j).obtenerElem();
-			if(	elementoCelda!=null)
-			{
-				elementoCelda.destruirse();
-				if(	elementoCelda!=null)
-				{
-					destrui=false;
-				}
-			}
-			j++;
-		}
-		j=y;
-		destrui=true;
-		while (j>=(y-alcance)&&(destrui))
-		{
-			elementoCelda=terreno.getCelda(x, j).obtenerElem();
-			if(	elementoCelda!=null)
-			{
-				elementoCelda.destruirse();
-				if(elementoCelda!=null)
-				{
-					destrui=false;
-				}
-			}
-			j--;
-		}
 		
+		terreno.getCelda(x, y).eliminarElementoEnCelda();
+		
+//		terreno.getCelda(posXAnteriorBomberman, posYAnteriorBomberman).eliminarElementoEnCelda();;
+//		System.out.println(this.posX+ " y pos y" + posY);
+		
+		
+		/*
+							int i=x;
+							boolean destrui=true;
+							ElementoEnCelda elementoCelda;
+							while (i<=(x+alcance)&&(destrui))
+							{
+								elementoCelda =terreno.getCelda(i, y).obtenerElem();
+								if(elementoCelda!=null)
+								{
+									elementoCelda.destruirse();
+									if(elementoCelda!=null)
+									{
+										destrui=false;
+									}
+								}
+								
+								i++;
+							}
+							i=x;
+							destrui=true;
+							while (i>=(x-alcance)&&(destrui))
+							{
+								elementoCelda =terreno.getCelda(i, y).obtenerElem();
+								if(elementoCelda!=null)
+								{
+									elementoCelda.destruirse();
+									if(	elementoCelda!=null)
+									{
+										destrui=false;
+									}
+								}
+								i--;
+							}
+							int j=y;
+							destrui=true;
+							while (j<=(y+alcance)&&(destrui))
+							{
+									elementoCelda=terreno.getCelda(x, j).obtenerElem();
+								if(	elementoCelda!=null)
+								{
+									elementoCelda.destruirse();
+									if(	elementoCelda!=null)
+									{
+										destrui=false;
+									}
+								}
+								j++;
+							}
+							j=y;
+							destrui=true;
+							while (j>=(y-alcance)&&(destrui))
+							{
+								elementoCelda=terreno.getCelda(x, j).obtenerElem();
+								if(	elementoCelda!=null)
+								{
+									elementoCelda.destruirse();
+									if(elementoCelda!=null)
+									{
+										destrui=false;
+									}
+								}
+								j--;
+							}
+					*/
 	}
 	
 	public void avanzar (Enemigo e){}
@@ -163,6 +172,11 @@ public class Bomba extends ElementoEnCelda
 	@Override
 	public ImageIcon getImagen() {
 		return imagen;
+	}
+
+	public void run() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

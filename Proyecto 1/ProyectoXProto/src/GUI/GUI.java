@@ -60,8 +60,17 @@ public class GUI extends JFrame{
 		juego= new Juego(this);
 		
 		matrizLabel = new JLabel[34][34];
+		for (int i = 0; i < 34; i++)
+		{
+			for (int j = 0; j< 34; j++)
+			{
+				matrizLabel[i][j] = new JLabel();
+			}
+		}
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 0, 1350, 1024);
+		setBounds(100, 0, 800, 1024);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -117,12 +126,10 @@ public class GUI extends JFrame{
 	
 		Terreno miTerreno = juego.getTerreno();
 		ImageIcon imagenCelda;
-		JLabel labelCelda;
-		for (int i = 0; i < 34 ; i++)
+		for (int i = 0; i < 33 ; i++)
 		{
-			for (int j = 0; j < 34; j++)
+			for (int j = 0; j < 33; j++)
 			{
-				labelCelda=new JLabel();
 				ElementoEnCelda elementoCelda= miTerreno.getCelda(i, j).obtenerElem();
 				if (elementoCelda == null)
 				{
@@ -132,10 +139,10 @@ public class GUI extends JFrame{
 				{
 					imagenCelda = elementoCelda.getImagen();
 				}
-				labelCelda.setIcon(imagenCelda);
-				labelCelda.setBounds((i*32),(j*32),32,32);
+				matrizLabel[i][j].setIcon(imagenCelda);
+				matrizLabel[i][j].setBounds((i*22),(j*22),22,22);
 				
-				contentPane.add(labelCelda);
+				contentPane.add(matrizLabel[i][j]);
 			}
 		}
 			
@@ -185,14 +192,7 @@ public class GUI extends JFrame{
 					
 
 					case KeyEvent.VK_SPACE:
-		/*veeeeeeeeeeeeeeeeeeeeeeeeeeeeeeer
-						bomba=new JLabel();
-						ImageIcon imagen= new ImageIcon("C:/Users/Lea/Desktop/bomba-01.gif");
-						bomba.setBounds(lblNewLabel.getX(),lblNewLabel.getY(),imagen.getIconWidth(), imagen.getIconHeight());
-						bomba.setIcon(imagen);
-						panel_1.add(bomba);
-						juego.getBomberman().ponerBomba();
-		*/
+						juego.ponerBomba();
 						break;
 					}
 				}
@@ -210,5 +210,9 @@ public class GUI extends JFrame{
 				}
 		});
 		
+	}
+
+	public JLabel getLabelEnMatriz(int i, int j) {
+		return matrizLabel[i][j];
 	}
 }
