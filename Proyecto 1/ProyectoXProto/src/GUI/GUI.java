@@ -1,37 +1,23 @@
 package GUI;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
-import Principal.Bomberman;
 import Principal.ElementoEnCelda;
 import Principal.Juego;
 import Principal.Terreno;
 
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-
-import javax.swing.BoxLayout;
-import java.awt.CardLayout;
-import java.awt.Color;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
 
 public class GUI extends JFrame{
 
 	private JPanel contentPane;
-	private JLabel lblNewLabel, bomba;
 	private JLabel [][] matrizLabel;
 	private Juego juego;
 	
@@ -59,10 +45,10 @@ public class GUI extends JFrame{
 		
 		juego= new Juego(this);
 		
-		matrizLabel = new JLabel[34][34];
-		for (int i = 0; i < 34; i++)
+		matrizLabel = new JLabel[31][13];
+		for (int i = 0; i < 31; i++)
 		{
-			for (int j = 0; j< 34; j++)
+			for (int j = 0; j< 13; j++)
 			{
 				matrizLabel[i][j] = new JLabel();
 			}
@@ -70,7 +56,7 @@ public class GUI extends JFrame{
 		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 0, 800, 1024);
+		setBounds(100, 0, 700, 320);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -78,7 +64,6 @@ public class GUI extends JFrame{
 		contentPane.setLayout(null);
 
 /* ESTO NO SE SI VA
-
 		JPanel panel_1 = new JPanel(new GridLayout(34,34));
 		panel_1.setBackground(Color.BLACK);
 		JPanel panel = new JPanel();
@@ -102,7 +87,6 @@ public class GUI extends JFrame{
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel_1.setAlignmentX(0);
-
 		lblNewLabel = new JLabel("New label");
 		//lblNewLabel.setIcon(icon);
 		lblNewLabel.setBounds(58, 100, 81, 14);
@@ -111,24 +95,11 @@ public class GUI extends JFrame{
 		
 		*/
 		
-		
-		
-		
-		
-		
-		
-//		
-//		JPanel panelGrilla= new JPanel();//(new GridLayout(34,34));
-//		panelGrilla.setBackground(Color.WHITE);
-//	
-//		panelGrilla.setBounds(200, 200, 1024, 1024);
-		//contentPane.add(panelGrilla);
-	
 		Terreno miTerreno = juego.getTerreno();
 		ImageIcon imagenCelda;
-		for (int i = 0; i < 33 ; i++)
+		for (int i = 0; i <31; i++)
 		{
-			for (int j = 0; j < 33; j++)
+			for (int j = 0; j < 13; j++)
 			{
 				ElementoEnCelda elementoCelda= miTerreno.getCelda(i, j).obtenerElem();
 				if (elementoCelda == null)
@@ -145,22 +116,7 @@ public class GUI extends JFrame{
 				contentPane.add(matrizLabel[i][j]);
 			}
 		}
-			
-/*		VVVVVVVVVVVVVVEEEEEEEEEEEER
-		
-		JLabel lblJugador = new JLabel("Jugador:");
-		lblJugador.setBounds(22, 11, 62, 19);
-		panel.add(lblJugador);
-		
-		JLabel lblPuntaje = new JLabel("Puntaje:");
-		lblPuntaje.setBounds(22, 29, 52, 14);
-		panel.add(lblPuntaje);
-		
-		JLabel lblTiempo = new JLabel("Tiempo:");
-		lblTiempo.setBounds(359, 11, 73, 32);
-		panel.add(lblTiempo);
-		contentPane.setLayout(gl_contentPane);
-*/
+
 		addKeyListener(new KeyAdapter()
 				
 		{

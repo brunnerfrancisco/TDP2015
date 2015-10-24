@@ -91,11 +91,7 @@ public class Bomba extends ElementoEnCelda implements Runnable
 	{
 		
 		terreno.getCelda(x, y).eliminarElementoEnCelda();
-		
-//		terreno.getCelda(posXAnteriorBomberman, posYAnteriorBomberman).eliminarElementoEnCelda();;
-//		System.out.println(this.posX+ " y pos y" + posY);
-		
-		
+	
 		/*
 							int i=x;
 							boolean destrui=true;

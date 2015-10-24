@@ -1,4 +1,3 @@
-
 package Principal;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -68,9 +67,9 @@ public class Juego
 	public void actualizarGUI()
 	{	
 		ImageIcon imagenCelda;
-		for (int i = 0; i < 33 ; i++)
+		for (int i = 0; i < 31 ; i++)
 		{
-			for (int j = 0; j < 33; j++)
+			for (int j = 0; j <13; j++)
 			{
 				ElementoEnCelda elementoCelda= terreno.getCelda(i, j).obtenerElem();
 				if (elementoCelda == null)

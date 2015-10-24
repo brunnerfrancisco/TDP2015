@@ -15,19 +15,23 @@ public class Terreno
 	 */
 	public Terreno()
 	{
-		matriz= new Celda[33][33];
+		matriz= new Celda[31][13];
 		// Establezco los limites para el terreno
-		for (int i = 0; i< 33 ; i++)
+		for (int i = 0; i< 13 ; i++)
 		{
-			matriz[i][0] = new Celda(i,0,new ParedNoDestruible(),this);
-			matriz[32][i] = new Celda(33,i,new ParedNoDestruible(),this);
 			matriz[0][i] = new Celda(0,i,new ParedNoDestruible(),this);
-			matriz[i][32] = new Celda(i,33, new ParedNoDestruible(),this);
+			matriz[30][i] = new Celda(30,i, new ParedNoDestruible(),this);
 		}
 		
-		for (int i = 1; i < 32 ; i++)
+		for (int i = 0; i< 31 ; i++)
 		{
-			for (int j = 1; j < 32; j++)
+			matriz[i][12] = new Celda(i,12,new ParedNoDestruible(),this);
+			matriz[i][0] = new Celda(i,0,new ParedNoDestruible(),this);
+			
+		}
+		for (int i = 1; i <30 ; i++)
+		{
+			for (int j = 1; j < 12; j++)
 			{	
 				if ((i % 2 == 0) && (j % 2 == 0))
 					matriz[i][j] = new Celda(i,j,new ParedNoDestruible(),this);
