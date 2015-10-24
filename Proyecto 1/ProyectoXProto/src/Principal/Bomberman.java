@@ -115,9 +115,16 @@ public class Bomberman extends ElementoEnCelda
 	{
 		if(cantBombasActuales>0)
 		{
-			terreno.getCelda(posX, posY).agregarElementoACelda(miBomba);
+			miBomba.setPosX(posX);
+			miBomba.setPosY(posY);
+			terreno.getCelda(posX, posY).ponerBombaEnCelda(miBomba);
 			cantBombasActuales--;
 		}
+	}
+	
+	public void agregarBomba()
+	{
+		cantBombasActuales++;
 	}
 	
 	public Bomba getBomba()
@@ -170,6 +177,12 @@ public class Bomberman extends ElementoEnCelda
 	public ImageIcon getImagen() {
 		return imagen;
 	}
+
+	public int obtenerCantBombas() {
+		return cantBombasActuales;
+	}
+
+
 	
 
 	

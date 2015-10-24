@@ -21,25 +21,35 @@ public class Celda
 		posY=y;
 		elementos = new ElementoEnCelda[5];
 		elementos[0] = elem;
-		cantElementos = 0;
+		if (elem != null)
+			cantElementos = 1;
+		else
+			cantElementos = 0;
 		terreno = t;
 	}
 	
 	public ElementoEnCelda obtenerElem()
 	{
-	
-		return elementos[cantElementos];
+		if (!celdaVacia())
+			return elementos[cantElementos-1];
+		else
+			return null;
 	}
 	
+	private boolean celdaVacia() {
+		return (cantElementos == 0);
+	}
+
 	public void agregarElementoACelda(ElementoEnCelda e)
 	{
-		elementos[cantElementos+1] = e;
+		elementos[cantElementos] = e;
 		cantElementos++;
 	}
 	
 	public void eliminarElementoEnCelda()
 	{
-		elementos[cantElementos] = null;
+		
+		elementos[cantElementos-1] = null;
 		cantElementos--;
 	}
 	
@@ -80,6 +90,13 @@ public class Celda
 	public Celda getCelda()
 	{
 		return this;
+	}
+
+	public void ponerBombaEnCelda(Bomba miBomba)
+	{	//Pongo a bomberman sobre la bomba.
+		elementos[cantElementos] = elementos[cantElementos-1];
+		elementos[cantElementos-1] = miBomba;
+		cantElementos++;
 	}
 
 }

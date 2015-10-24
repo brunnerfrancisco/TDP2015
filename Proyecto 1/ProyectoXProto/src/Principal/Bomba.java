@@ -27,7 +27,7 @@ public class Bomba extends ElementoEnCelda implements Runnable
 		alcance=1;
 		tiempo=2500;
 		terreno=t;
-		imagen = new ImageIcon(getClass().getResource("/images/bomba.gif"));
+		imagen = new ImageIcon(getClass().getResource("/images/bomba2.gif"));
 	}
 	
 	/**
@@ -178,5 +178,11 @@ public class Bomba extends ElementoEnCelda implements Runnable
 		// TODO Auto-generated method stub
 		
 	}
-	
+
+	public void setPosX(int posX2) {
+		posX = posX2;
+	}
+	public void setPosY(int posX2) {
+		posY = posX2;
+	}
 }

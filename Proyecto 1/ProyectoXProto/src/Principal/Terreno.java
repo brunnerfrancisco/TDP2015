@@ -31,6 +31,7 @@ public class Terreno
 			{	
 				if ((i % 2 == 0) && (j % 2 == 0))
 					matriz[i][j] = new Celda(i,j,new ParedNoDestruible(),this);
+					
 				else
 					matriz[i][j] = new Celda(i,j, null,this);
 			}

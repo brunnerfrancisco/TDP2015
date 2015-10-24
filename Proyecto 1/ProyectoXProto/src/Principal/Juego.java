@@ -4,6 +4,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import GUI.GUI;
+import Threaders.BombaThread;
 
 /*
  * Clase principal del juego. Responsable de iniciar toda la ejecución
@@ -91,35 +92,13 @@ public class Juego
 	}
 
 	public void ponerBomba() {
-		jugador.ponerBomba();
-		actualizarGUI();
-		(new Tiempo(this,jugador,gui)).run();
-	
-	}
-	private static class Tiempo extends Thread
-	{
-		private Bomberman bomberman;
-		private Juego juego;
-		public Tiempo(Juego g, Bomberman b,GUI gu)
-		{
-			bomberman = b;
-			juego = g;
+
+		if (jugador.obtenerCantBombas() > 0)
+		{	
+			BombaThread t = new BombaThread(this,jugador);
+			t.start();
 		}
-		public void run()
-		{
-			try {
-				sleep(3000);
-				Bomba miBomba = bomberman.getBomba();
-				miBomba.explotar(miBomba.getX(),miBomba.getY());
-				juego.actualizarGUI();
-				
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			
-		}
+		
 	}
 	
 }
