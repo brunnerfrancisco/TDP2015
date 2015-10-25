@@ -7,7 +7,6 @@ package Principal;
  */
 public class Terreno 
 {
-	
 	protected Celda[][] matriz;
 	
 	/**
@@ -53,7 +52,4 @@ public class Terreno
 	{
 		return matriz[x][y];
 	}
-	
-	
-	
 }

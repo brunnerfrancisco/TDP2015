@@ -122,15 +122,23 @@ public class Bomberman extends ElementoEnCelda
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	public void agregarBomba()
 	{
 		cantBombasActuales++;
 	}
 	
+	/**
+	 * Retorna la bomba del bomberman
+	 * @return
+	 */
 	public Bomba getBomba()
 	{
 		return miBomba;
 	}
+	
 	/**
 	 * Método que incrementa la velocidad de movimilidad del jugador.
 	 */
@@ -177,7 +185,10 @@ public class Bomberman extends ElementoEnCelda
 	public ImageIcon getImagen() {
 		return imagen;
 	}
-
+	/**
+	 * Retorna la cantidad de bombas que puede poner el bomberman simultaneamente
+	 * @return Cantidad de bombas que puede poner el bomberman simultaneamente
+	 */
 	public int obtenerCantBombas() {
 		return cantBombasActuales;
 	}

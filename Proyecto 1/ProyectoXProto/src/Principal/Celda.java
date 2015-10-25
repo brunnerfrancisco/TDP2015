@@ -28,6 +28,10 @@ public class Celda
 		terreno = t;
 	}
 	
+	/**
+	 * Retorna el ultimo elemento de la celda
+	 * @return ultimo elemento de la celda
+	 */
 	public ElementoEnCelda obtenerElem()
 	{
 		if (!celdaVacia())
@@ -35,17 +39,26 @@ public class Celda
 		else
 			return null;
 	}
-	
+	/**
+	 * Verifica que la celda este vacia
+	 * @return true si la celda esta vacia, false en caso contrario
+	 */
 	private boolean celdaVacia() {
 		return (cantElementos == 0);
 	}
-
+	/**
+	 * Agrega un elemento a la celda
+	 * @param e Elemento que va a pertenecer a la celda
+	 */
 	public void agregarElementoACelda(ElementoEnCelda e)
 	{
 		elementos[cantElementos] = e;
 		cantElementos++;
 	}
 	
+	/**
+	 * Elimina el ultimo elemento de la celda
+	 */
 	public void eliminarElementoEnCelda()
 	{
 		
@@ -53,16 +66,28 @@ public class Celda
 		cantElementos--;
 	}
 	
+	/**
+	 * Retorma la posicion X de la celda en la matriz de celdas
+	 * @return posX
+	 */
 	public int getPosX()
 	{
 		return posX;
 	}
 	
+	/**
+	 * Retorma la posicion X de la celda en la matriz de celdas
+	 * @return posX
+	 */
 	public int getPosY()
 	{
 		return posY;
 	}
 	
+	/**
+	 * Agrega al bomberman como elemento de la celda en caso de ser posible
+	 * @param b
+	 */
 	public void avanzar(Bomberman b)
 	{
 		if (obtenerElem() == null) // celda vacia
@@ -87,11 +112,19 @@ public class Celda
 		
 	}
 	
+	/**
+	 * Se retorna a si misma
+	 * @return this
+	 */
 	public Celda getCelda()
 	{
 		return this;
 	}
-
+	
+	/**
+	 * Agrega la bomba como elemento de la celda
+	 * @param miBomba
+	 */
 	public void ponerBombaEnCelda(Bomba miBomba)
 	{	//Pongo a bomberman sobre la bomba.
 		elementos[cantElementos] = elementos[cantElementos-1];

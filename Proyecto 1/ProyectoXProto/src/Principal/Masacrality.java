@@ -23,8 +23,10 @@ public class Masacrality extends PowerUps
 	{
 		
 	}
-
-	@Override
+	
+	/**
+	 * Retona la imagen del PowerUp
+	 */
 	public ImageIcon getImagen() {
 		// TODO Auto-generated method stub
 		return null;

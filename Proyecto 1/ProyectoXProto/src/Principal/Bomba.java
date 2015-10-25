@@ -8,7 +8,7 @@ import Principal.Juego;
  * @author Brunner Francisco, Vercelli Franco, Volpe Leandro.
  *
  */
-public class Bomba extends ElementoEnCelda implements Runnable
+public class Bomba extends ElementoEnCelda 
 {
 	protected int tiempo;
 	protected int alcance;
@@ -19,6 +19,7 @@ public class Bomba extends ElementoEnCelda implements Runnable
 	 
 	/**
 	 * Contructor de la clase, crea una nueva instancia de la misma.
+	 * @param t Terreno que conoce la Bomba
 	 */
 	public Bomba(Terreno t)
 	{
@@ -158,27 +159,44 @@ public class Bomba extends ElementoEnCelda implements Runnable
 					*/
 	}
 	
+	/**
+	 * 
+	 */
 	public void avanzar (Enemigo e){}
+	
+	/**
+	 * 
+	 */
 	public void avanzar (Bomberman b){}
+	
+	/**
+	 * 
+	 */
 	public void destruirse()
 	{
 		
 	}
-
-	@Override
+	
+	/**
+	 * Retorna la imgen de la bomba
+	 */
 	public ImageIcon getImagen() {
 		return imagen;
 	}
-
-	public void run() {
-		// TODO Auto-generated method stub
-		
+	
+	/**
+	 * 
+	 * @param posX
+	 */
+	public void setPosX(int posX) {
+		this.posX = posX;
 	}
-
-	public void setPosX(int posX2) {
-		posX = posX2;
-	}
-	public void setPosY(int posX2) {
-		posY = posX2;
+	
+	/**
+	 * Setea la posisicion y de la bomba con el valor de posY
+	 * @param posY
+	 */
+	public void setPosY(int posY) {
+		this.posY = posY;
 	}
 }

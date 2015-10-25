@@ -4,6 +4,9 @@ import javax.swing.ImageIcon;
 
 public class ParedNoDestruible extends Pared {
 	protected ImageIcon imagen;
+	/**
+	 * Constructor de la clase, crea una nueva instancia de la misma.
+	 */
 	public ParedNoDestruible()
 	{
 		imagen = new ImageIcon(getClass().getResource("/images/NoTransitable.jpg"));
@@ -27,7 +30,10 @@ public class ParedNoDestruible extends Pared {
 		
 	}
 
-	@Override
+	/**
+	 * Retorna la imagen de la pared no destruible
+	 * @return imagen
+	 */
 	public ImageIcon getImagen() {
 		return imagen;
 	}

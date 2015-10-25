@@ -22,8 +22,10 @@ public class Bombality extends PowerUps
 	{
 		
 	}
-
-	@Override
+	
+	/**
+	 *  Retorna la imagen de la 
+	 */
 	public ImageIcon getImagen() {
 		// TODO Auto-generated method stub
 		return null;

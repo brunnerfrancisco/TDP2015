@@ -5,6 +5,11 @@ public class BombaThread extends Thread
 {
 	private Bomberman bomberman;
 	private Juego juego;
+	/**
+	 * Constructor de la clase, crea una nueva instancia de la misma.
+	 * @param juego
+	 * @param b
+	 */
 	public BombaThread(Juego juego, Bomberman b)
 	{
 		bomberman = b;
