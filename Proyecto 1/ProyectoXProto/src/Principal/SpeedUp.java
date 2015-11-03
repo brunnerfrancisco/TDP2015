@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 public class SpeedUp extends PowerUps 
 {
 
+	protected ImageIcon imagen;
 	/**
 	 * Contructor de la clase, crea una nueva instancia de la misma.
 	 */
@@ -17,9 +18,26 @@ public class SpeedUp extends PowerUps
 	{
 		
 	}
-	
-	public void avanzar(Bomberman b)
-	{
+
+	@Override
+	public void avanzar(Bomberman b) {
+		int velocidadNueva = b.getVelocidad() *2;
+		b.setVelocidad(velocidadNueva);
+		
+		
+		destruirse();
+		
+	}
+
+	@Override
+	public void avanzar(Enemigo e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void destruirse() {
+		// TODO Auto-generated method stub
 		
 	}
 
@@ -28,5 +46,6 @@ public class SpeedUp extends PowerUps
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 	
 }

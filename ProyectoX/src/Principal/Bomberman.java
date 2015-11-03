@@ -193,6 +193,11 @@ public class Bomberman extends ElementoEnCelda
 		return cantBombasActuales;
 	}
 
+	public void setVelocidad(int velocidadNueva) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 	
 
