@@ -9,37 +9,26 @@ import javax.swing.ImageIcon;
  */
 public class SpeedUp extends PowerUps 
 {
-
-	protected ImageIcon imagen;
+	
 	/**
 	 * Contructor de la clase, crea una nueva instancia de la misma.
 	 */
 	public SpeedUp()
-	{
-		
+	{	
+		//super.imagen = new ImageIcon(getClass().getResource("/images/speedUp.png"));
 	}
 
 	@Override
 	public void avanzar(Bomberman b) {
 		int velocidadNueva = b.getVelocidad() *2;
 		b.setVelocidad(velocidadNueva);
-		
-		
-		destruirse();
-		
-	}
-
-	@Override
-	public void avanzar(Enemigo e) {
-		// TODO Auto-generated method stub
+		super.miCelda.eliminarElementoEnCelda(); // Saco el PowerUP
+		super.miCelda.avanzar(b);
+		b.addPuntos(30);
+		//VEEEEEEEEER SI FUNCA O NO
 		
 	}
 
-	@Override
-	public void destruirse() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public ImageIcon getImagen() {

@@ -23,7 +23,8 @@ public class BombaThread extends Thread
 			
 			sleep(3000);
 			Bomba miBomba = bomberman.getBomba();
-			miBomba.explotar(miBomba.getX(),miBomba.getY());
+			int puntos = miBomba.explotar(miBomba.getX(),miBomba.getY());
+			bomberman.addPuntos(puntos);
 			bomberman.agregarBomba();
 			juego.actualizarGUI();
 			

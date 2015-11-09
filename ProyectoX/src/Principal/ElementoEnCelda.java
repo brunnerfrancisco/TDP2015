@@ -9,11 +9,22 @@ import javax.swing.ImageIcon;
  */
 public abstract class ElementoEnCelda 
 {
+	protected Celda miCelda;
+	protected ImageIcon imagen;
 
 	public abstract void avanzar(Bomberman b);
 	public abstract void avanzar(Enemigo e);
-	public abstract void destruirse();
-	public abstract ImageIcon getImagen();
+	public abstract int destruirse();
+	public  void setCelda(Celda c)
+	{
+		miCelda = c;
+	}
 	
+	/**
+	 * Retona la imagen del PowerUp
+	 */
+	public ImageIcon getImagen() {
+		return imagen;
+	}
 
 }

@@ -89,27 +89,46 @@ public class Celda
 	 * @param b
 	 */
 	public void avanzar(Bomberman b)
-	{
+	{		
 		if (obtenerElem() == null) // celda vacia
 			{
-				int posXAnteriorBomberman = b.getX();
-				int posYAnteriorBomberman = b.getY();
-				b.setX(posX);
-				b.setY(posY);
-				this.agregarElementoACelda(b);
-				terreno.getCelda(posXAnteriorBomberman, posYAnteriorBomberman).eliminarElementoEnCelda();;
-				System.out.println(this.posX+ " y pos y" + posY);
+//				int posXAnteriorBomberman = b.getX();
+//				int posYAnteriorBomberman = b.getY();
+//				b.setX(posX);
+//				b.setY(posY);
+//				b.setCelda(this);
+//				this.agregarElementoACelda(b);
+//				terreno.getCelda(posXAnteriorBomberman, posYAnteriorBomberman).eliminarElementoEnCelda();
+//				System.out.println(this.posX+ " y pos y" + posY);
+			Celda celdaAnterior = b.getCelda(); // PUEDE SER QUE TENGAMOS Q MANEJAR LOS POSX POS Y COMO EN CELDA
+			b.setX(posX);
+			b.setY(posY);
+			b.setCelda(this);
+			this.agregarElementoACelda(b);
+			celdaAnterior.eliminarElementoEnCelda();
 			}
 		else
 		{
-			obtenerElem().avanzar(b); // Llamo a avanzar con bomberman y la celda a la que quiero avanzar
+			obtenerElem().avanzar(b); // Llamo a avanzar del elemento en celda con bomberman 
 		}
 	}
 	
 	
 	public void avanzar(Enemigo e)
 	{
-		
+		if (obtenerElem() == null) // celda vacia
+		{
+			Celda celdaAnterior = e.getCelda(); // PUEDE SER QUE TENGAMOS Q MANEJAR LOS POSX POS Y COMO EN CELDA
+			e.setX(posX);
+			e.setY(posY);
+			e.setCelda(this);
+			this.agregarElementoACelda(e);
+			celdaAnterior.eliminarElementoEnCelda();
+		}
+		else
+		{
+			obtenerElem().avanzar(e); // Llamo a avanzar del elemento en celda con enemigo
+		}
 	}
 	
 	/**

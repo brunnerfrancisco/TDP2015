@@ -18,8 +18,14 @@ public class Terreno
 		// Establezco los limites para el terreno
 		for (int i = 0; i< 13 ; i++)
 		{
-			matriz[0][i] = new Celda(0,i,new ParedNoDestruible(),this);
-			matriz[30][i] = new Celda(30,i, new ParedNoDestruible(),this);
+			ParedNoDestruible pared1 = new ParedNoDestruible();
+			matriz[0][i] = new Celda(0,i, pared1,this);
+			pared1.setCelda(matriz[0][i]);
+			ParedNoDestruible pared2 = new ParedNoDestruible();
+			matriz[30][i] = new Celda(30,i, pared2,this);
+			pared2.setCelda(matriz[30][i]);
+		//	FALTA HACER IGUAL EL RESTO
+			
 		}
 		
 		for (int i = 0; i< 31 ; i++)

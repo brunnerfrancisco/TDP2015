@@ -16,19 +16,14 @@ public class Masacrality extends PowerUps
 	 */
 	public Masacrality()
 	{
-		
+		super.imagen = new ImageIcon(getClass().getResource("/images/Masacrality.png"));
 	}
 	
 	public void avanzar(Bomberman b)
 	{
 		
 	}
-	
-	/**
-	 * Retona la imagen del PowerUp
-	 */
-	public ImageIcon getImagen() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
+
+
 }

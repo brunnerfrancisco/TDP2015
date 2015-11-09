@@ -15,7 +15,6 @@ public class Bomba extends ElementoEnCelda
 	protected int posX;
 	protected int posY;
 	protected Terreno terreno;
-	protected ImageIcon imagen;
 	 
 	/**
 	 * Contructor de la clase, crea una nueva instancia de la misma.
@@ -88,13 +87,14 @@ public class Bomba extends ElementoEnCelda
 	/**
 	 * Método que maneja la explosión de las bombas.
 	 */
-	public void explotar(int x, int y)
+	public int explotar(int x, int y)
 	{
 		
 		terreno.getCelda(x, y).eliminarElementoEnCelda();
 	
 		/*
 							int i=x;
+							int puntos = 0;
 							boolean destrui=true;
 							ElementoEnCelda elementoCelda;
 							while (i<=(x+alcance)&&(destrui))
@@ -102,7 +102,7 @@ public class Bomba extends ElementoEnCelda
 								elementoCelda =terreno.getCelda(i, y).obtenerElem();
 								if(elementoCelda!=null)
 								{
-									elementoCelda.destruirse();
+									puntos = puntos + elementoCelda.destruirse();
 									if(elementoCelda!=null)
 									{
 										destrui=false;
@@ -118,7 +118,7 @@ public class Bomba extends ElementoEnCelda
 								elementoCelda =terreno.getCelda(i, y).obtenerElem();
 								if(elementoCelda!=null)
 								{
-									elementoCelda.destruirse();
+									puntos = puntos + elementoCelda.destruirse();
 									if(	elementoCelda!=null)
 									{
 										destrui=false;
@@ -133,7 +133,7 @@ public class Bomba extends ElementoEnCelda
 									elementoCelda=terreno.getCelda(x, j).obtenerElem();
 								if(	elementoCelda!=null)
 								{
-									elementoCelda.destruirse();
+									puntos = puntos + elementoCelda.destruirse();
 									if(	elementoCelda!=null)
 									{
 										destrui=false;
@@ -148,7 +148,7 @@ public class Bomba extends ElementoEnCelda
 								elementoCelda=terreno.getCelda(x, j).obtenerElem();
 								if(	elementoCelda!=null)
 								{
-									elementoCelda.destruirse();
+									puntos = puntos + elementoCelda.destruirse();
 									if(elementoCelda!=null)
 									{
 										destrui=false;
@@ -156,7 +156,9 @@ public class Bomba extends ElementoEnCelda
 								}
 								j--;
 							}
+							b.sumarPuntos(puntos);
 					*/
+		return 0;
 	}
 	
 	/**
@@ -172,16 +174,9 @@ public class Bomba extends ElementoEnCelda
 	/**
 	 * 
 	 */
-	public void destruirse()
+	public int destruirse()
 	{
-		
-	}
-	
-	/**
-	 * Retorna la imgen de la bomba
-	 */
-	public ImageIcon getImagen() {
-		return imagen;
+		return 0;
 	}
 	
 	/**

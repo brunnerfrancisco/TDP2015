@@ -19,7 +19,6 @@ public class Bomberman extends ElementoEnCelda
 	protected boolean estaVivo;
 	protected Bomba miBomba;
 	protected Terreno terreno;
-	protected ImageIcon imagen;
 	
 	/**
 	 * Contructor de la clase, crea una nueva instancia de la misma.
@@ -35,6 +34,7 @@ public class Bomberman extends ElementoEnCelda
 		cantBombasActuales=1;
 		terreno=t;
 		miBomba=new Bomba(t);
+		miCelda = terreno.getCelda(1, 1);
 		imagen = new ImageIcon(getClass().getResource("/images/bomberman.png"));
 		
 	}
@@ -84,14 +84,7 @@ public class Bomberman extends ElementoEnCelda
 		modoDios=d;
 	}
 	
-	/**
-	 * Método que aumenta el puntaje del jugador de acuerdo a la cantidad que indica el parámetro. 
-	 * @param p, de tipo entero.
-	 */
-	public void sumarPuntos(int p)
-	{
-		puntaje+=p;
-	}
+	
 	
 	/**
 	 * Método que devuelve el puntaje del jugador en ese momento.
@@ -139,28 +132,22 @@ public class Bomberman extends ElementoEnCelda
 		return miBomba;
 	}
 	
-	/**
-	 * Método que incrementa la velocidad de movimilidad del jugador.
-	 */
-	public void incrementarVel()
-	{
-		
-	}
 	
 	/**
 	 * Método que duplica el alcance de la bomba que pone el jugador.
 	 */
 	public void duplicarAlcance()
 	{
-		
+		int alcanceNuevo = miBomba.getAlcance() *2;
+		miBomba.setAlcance(alcanceNuevo);
 	}
 	
 	/**
 	 * Método que duplica la cantidad de bombas que puede poner el jugador simultaneamente.
 	 */
-	public void duplicarCantBombas()
+	public void aumentarCantBombas()
 	{
-		cantBombasSimultaneas*=2;
+		cantBombasSimultaneas++;
 	}
 
 	@Override
@@ -171,19 +158,15 @@ public class Bomberman extends ElementoEnCelda
 
 	@Override
 	public void avanzar(Enemigo e) {
-		// TODO Auto-generated method stub
+		this.destruirse();
 		
 	}
 
 	@Override
-	public void destruirse() {
-		// TODO Auto-generated method stub
+	public int destruirse() {
+		estaVivo = false;
+		return 0;
 		
-	}
-
-	@Override
-	public ImageIcon getImagen() {
-		return imagen;
 	}
 	/**
 	 * Retorna la cantidad de bombas que puede poner el bomberman simultaneamente
@@ -194,12 +177,29 @@ public class Bomberman extends ElementoEnCelda
 	}
 
 	public void setVelocidad(int velocidadNueva) {
-		// TODO Auto-generated method stub
-		
+		velocidad = velocidadNueva;
 	}
 
+	public int getVelocidad() {
+		return velocidad;
+	}
+
+	public Celda getCelda() {
+		return miCelda;
+	}
+
+	public boolean modoDios() {
+		return modoDios;
+	}
 
 	
+	/**
+	 * Método que aumenta el puntaje del jugador de acuerdo a la cantidad que indica el parámetro. 
+	 * @param p, de tipo entero.
+	 */
+	public void addPuntos(int p) {
+			puntaje+=p;
+	}
 
 	
 }

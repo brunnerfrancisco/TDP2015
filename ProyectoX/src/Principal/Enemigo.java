@@ -1,5 +1,7 @@
 package Principal;
 
+import javax.swing.ImageIcon;
+
 /**
  * Clase que modela los distintos enemigos que tiene el juego.
  * @author Brunner Francisco, Vercelli Franco, Volpe Leandro.
@@ -12,6 +14,8 @@ public abstract class Enemigo extends ElementoEnCelda
 	protected boolean modoDios;
 	protected int posX;
 	protected int posY;
+	protected Terreno terreno;
+	protected ImageIcon imagen;
 	
 	/**
 	 * Constructor de la clase, crea una nueva instancia de la misma.
@@ -33,9 +37,39 @@ public abstract class Enemigo extends ElementoEnCelda
 	/**
 	 * Método responsable del avance de los enemigos.
 	 */
-	public void avanzar()
-	{
-		
+	public abstract void avanzar();
+
+	public void setX(int x) {
+		posX = x;
 	}
+	
+	public void setY(int y) {
+		posY = y;
+	}
+
+	public int getX() {
+		return posX;
+	}
+
+	public int getY() {
+		return posY;
+	}
+
+	public Celda getCelda() {
+		return super.miCelda;
+	}
+
+	public boolean modoDios() {
+		return modoDios;
+	}
+	
+	public void avanzar(Enemigo e) {
+	
+	}
+	
+	public void avanzar(Bomberman b) {
+		b.destruirse();
+	}
+	
 	
 }

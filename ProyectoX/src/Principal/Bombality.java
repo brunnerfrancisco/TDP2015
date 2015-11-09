@@ -9,25 +9,21 @@ import javax.swing.ImageIcon;
  */
 public class Bombality extends PowerUps
 {
-	
 	/**
 	 * Contructor de la clase, crea una nueva instancia de la misma.
 	 */
 	public Bombality()
 	{
-		
+		super.imagen = new ImageIcon(getClass().getResource("/images/Bombality.png"));
 	}
 
 	public void avanzar(Bomberman b)
 	{
-		
+		b.aumentarCantBombas();
+		super.miCelda.eliminarElementoEnCelda(); // Saco el PowerUP
+		super.miCelda.avanzar(b);
+		b.addPuntos(35);
 	}
-	
-	/**
-	 *  Retorna la imagen de la 
-	 */
-	public ImageIcon getImagen() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
+
 }

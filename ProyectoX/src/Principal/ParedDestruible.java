@@ -16,9 +16,10 @@ public class ParedDestruible extends Pared
 	/**
 	 * 
 	 */
-	public void destruirse()
+	public int destruirse()
 	{
-		
+		super.miCelda.eliminarElementoEnCelda();
+		return 10;
 	}
 	
 	/**
@@ -26,25 +27,29 @@ public class ParedDestruible extends Pared
 	 * @param b
 	 */
 	public void avanzar(Bomberman b) {
-		if (b.modoDios)
+		if (b.modoDios())
 		{
-			b.setX(this.getCelda().getPosX());
-			b.setY(this.getCelda().getPosY());
-			//	muevo en la grafica 1*32 para arriba
+			Celda celdaAnterior = b.getCelda(); // PUEDE SER QUE TENGAMOS Q MANEJAR LOS POSX POS Y COMO EN CELDA
+			b.setX(super.miCelda.getPosX());
+			b.setY(super.miCelda.getPosY());
+			b.setCelda(super.miCelda);
+			miCelda.agregarElementoACelda(b);
+			celdaAnterior.eliminarElementoEnCelda();
+			//	Falta actualizar la grafica
 		}
 	}
 	@Override
 	public void avanzar(Enemigo e) {
-		// TODO Auto-generated method stub
+		if (e.modoDios())
+		{	Celda celdaAnterior = e.getCelda();// PUEDE SER QUE TENGAMOS Q MANEJAR LOS POSX POS Y COMO EN CELDA
 		
+			e.setX(super.miCelda.getPosX());
+			e.setY(super.miCelda.getPosY());
+			e.setCelda(super.miCelda);
+			miCelda.agregarElementoACelda(e);
+			celdaAnterior.eliminarElementoEnCelda();
+			//	Falta actualizar la grafica
+		}
 	}
 	
-	/**
-	 * Retorna la imagen de la pared
-	 * @return
-	 */
-	public ImageIcon getImagen() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

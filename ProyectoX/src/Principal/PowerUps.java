@@ -10,8 +10,8 @@ public abstract class PowerUps extends ElementoEnCelda
 		
 	}
 	
-	public void destruirse()
+	public int destruirse()
 	{
-		
+		return 0;
 	}
 }

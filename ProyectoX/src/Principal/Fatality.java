@@ -15,17 +15,17 @@ public class Fatality extends PowerUps
 	 */
 	public Fatality()
 	{
-		
+		super.imagen = new ImageIcon(getClass().getResource("/images/Fatality.png"));
 	}
 	
 	public void avanzar(Bomberman b)
 	{
-		
+		b.duplicarAlcance();
+		miCelda.eliminarElementoEnCelda();
+		miCelda.avanzar(b);
+		b.addPuntos(35);
 	}
 
-	@Override
-	public ImageIcon getImagen() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
+
 }

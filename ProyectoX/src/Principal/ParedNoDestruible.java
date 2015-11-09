@@ -25,16 +25,9 @@ public class ParedNoDestruible extends Pared {
 	}
 
 	@Override
-	public void destruirse() {
-		// TODO Auto-generated method stub
+	public int destruirse() {
+		return 0;
 		
 	}
 
-	/**
-	 * Retorna la imagen de la pared no destruible
-	 * @return imagen
-	 */
-	public ImageIcon getImagen() {
-		return imagen;
-	}
 }
