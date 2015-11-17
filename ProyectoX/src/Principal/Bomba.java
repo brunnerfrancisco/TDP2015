@@ -90,7 +90,7 @@ public class Bomba extends ElementoEnCelda
 	public int explotar(int x, int y)
 	{
 		
-		terreno.getCelda(x, y).eliminarElementoEnCelda();
+		    terreno.getCelda(x, y).eliminarElementoEnCelda();
 			int i=x;
 			int puntos = 0;
 			boolean destrui=true;

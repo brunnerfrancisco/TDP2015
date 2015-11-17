@@ -23,7 +23,7 @@ public class GUI extends JFrame{
 	
 	private JPanel puntajePanel;
 	private JLabel puntajeLabelTitulo;
-	private JLabel puntajeLabelContenido;
+	protected JLabel puntajeLabelContenido;
 	
 	private Juego juego;
 	
@@ -221,5 +221,15 @@ public class GUI extends JFrame{
 	public int getTamLabel() 
 	{
 		return tamLabel;
+	}
+	
+	public void actualizarPuntaje(int p) 
+	{
+		String puntosAct = puntajeLabelContenido.getText();
+		int puntos= Integer.parseInt(puntosAct);
+		puntos = puntos + p;
+		puntosAct = Integer.toString(puntos);
+		puntajeLabelContenido.setText(puntosAct);
+		
 	}
 }

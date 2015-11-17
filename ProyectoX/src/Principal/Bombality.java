@@ -7,22 +7,22 @@ import javax.swing.ImageIcon;
  * @author Brunner Francisco, Vercelli Franco, Volpe Leandro.
  *
  */
-public class Bombality extends PowerUps
+public class Bombality extends PowerUp
 {
 	/**
 	 * Contructor de la clase, crea una nueva instancia de la misma.
 	 */
 	public Bombality()
 	{
-		super.imagen = new ImageIcon(getClass().getResource("/images/Bombality.png"));
+		super.imagen = new ImageIcon(getClass().getResource("/images/bombality.jpg"));
 	}
 
 	public void avanzar(Bomberman b)
 	{
 		b.aumentarCantBombas();
 		super.miCelda.eliminarElementoEnCelda(); // Saco el PowerUP
-		super.miCelda.avanzar(b);
 		b.addPuntos(35);
+		super.miCelda.avanzar(b);
 	}
 
 

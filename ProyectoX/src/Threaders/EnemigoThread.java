@@ -42,9 +42,11 @@ public class EnemigoThread extends Thread{
 			
 				sleep(1000);
 				misRugulus[0].avanzar();	
-				if (misRugulus[0].getCelda() != misRugulus[0].getCeldaAnterior())
-					juego.actualizarGUI(misRugulus[0].getCelda(),misRugulus[0].getCeldaAnterior());
-//				juego.actualizarGUI();
+				if (misRugulus[0].getCelda() != misRugulus[0].getCeldaAnterior()){
+					juego.actualizarGUI(misRugulus[0].getCelda(), misRugulus[0].getCeldaAnterior());
+					//juego.actualizarGUI();
+				}
+//				    juego.actualizarGUI();
 					
 				System.out.println(misRugulus[0].getX()+" "+ misRugulus[0].getY());
 			}

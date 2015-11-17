@@ -1,5 +1,7 @@
 package Principal;
 
+import java.util.Random;
+
 /**
  * Clase que se encarga de la lógica y ubicación de todos los elementos en el mapa.
  * @author Brunner Francisco, Vercelli Franco, Volpe Leandro.
@@ -18,22 +20,16 @@ public class Terreno
 		// Establezco los limites para el terreno
 		for (int i = 0; i< 13 ; i++)
 		{
-			ParedNoDestruible pared1 = new ParedNoDestruible();
-			matriz[0][i] = new Celda(0,i, pared1,this);
-			pared1.setCelda(matriz[0][i]);
-			ParedNoDestruible pared2 = new ParedNoDestruible();
-			matriz[30][i] = new Celda(30,i, pared2,this);
-			pared2.setCelda(matriz[30][i]);
-		//	FALTA HACER IGUAL EL RESTO
-			
+			matriz[0][i] = new Celda(0,i, new ParedNoDestruible(),this);
+			matriz[30][i] = new Celda(30,i, new ParedNoDestruible(),this);
 		}
-		
 		for (int i = 0; i< 31 ; i++)
 		{
 			matriz[i][12] = new Celda(i,12,new ParedNoDestruible(),this);
 			matriz[i][0] = new Celda(i,0,new ParedNoDestruible(),this);
-			
 		}
+		
+		//Creo las Celdas que son transitables
 		for (int i = 1; i <30 ; i++)
 		{
 			for (int j = 1; j < 12; j++)
@@ -47,6 +43,39 @@ public class Terreno
 			
 		}	
 		
+		//Pongo los PowerUp sobre celdas transitables
+		 this.agregarPowerUps();
+		 
+		
+	}
+
+	private void agregarPowerUps() {
+		 PowerUp [] misPowerUps = new PowerUp[11];
+		 misPowerUps[0] = new SpeedUp();
+		 misPowerUps[1] = new SpeedUp();
+		 misPowerUps[2] = new SpeedUp();
+		 misPowerUps[3] = new SpeedUp();
+		 misPowerUps[4] = new Fatality();
+		 misPowerUps[5] = new Fatality();
+		 misPowerUps[6] = new Fatality();
+		 misPowerUps[7] = new Bombality();
+		 misPowerUps[8] = new Bombality();
+		 misPowerUps[9] = new Bombality();
+		 misPowerUps[10] = new Masacrality();
+		 Random rnd  = new Random();
+		 for (int i = 0; i < 11; i++)
+		 {
+			 int fila = 1+rnd.nextInt(29);
+			 int col = 1+rnd.nextInt(11);
+			 while(((fila % 2 == 0) && (col % 2 == 0)) || (fila < 9 && col < 5))
+			 {
+				  fila = 1+rnd.nextInt(29);
+				  col = 1+rnd.nextInt(11);
+			 }
+				 Celda c = this.getCelda(fila,col);
+			 	 c.agregarElementoACelda(misPowerUps[i]);
+			     misPowerUps[i].setCelda(c);
+		 }			 
 		
 	}
 

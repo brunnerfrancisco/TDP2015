@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
  * @author Brunner Francisco, Vercelli Franco, Volpe Leandro.
  *
  */
-public class Masacrality extends PowerUps
+public class Masacrality extends PowerUp
 {
 
 	/**
@@ -16,7 +16,7 @@ public class Masacrality extends PowerUps
 	 */
 	public Masacrality()
 	{
-		super.imagen = new ImageIcon(getClass().getResource("/images/Masacrality.png"));
+		super.imagen = new ImageIcon(getClass().getResource("/images/masacrality.jpg"));
 	}
 	
 	public void avanzar(Bomberman b)

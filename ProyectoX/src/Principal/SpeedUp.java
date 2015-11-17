@@ -7,7 +7,7 @@ import javax.swing.ImageIcon;
  * @author Brunner Francisco, Vercelli Franco, Volpe Leandro.
  *
  */
-public class SpeedUp extends PowerUps 
+public class SpeedUp extends PowerUp
 {
 	
 	/**
@@ -15,7 +15,7 @@ public class SpeedUp extends PowerUps
 	 */
 	public SpeedUp()
 	{	
-		//super.imagen = new ImageIcon(getClass().getResource("/images/speedUp.png"));
+		super.imagen = new ImageIcon(getClass().getResource("/images/speedUp.jpg"));
 	}
 
 	@Override
@@ -23,8 +23,8 @@ public class SpeedUp extends PowerUps
 		int velocidadNueva = b.getVelocidad() *2;
 		b.setVelocidad(velocidadNueva);
 		super.miCelda.eliminarElementoEnCelda(); // Saco el PowerUP
-		super.miCelda.avanzar(b);
 		b.addPuntos(30);
+		super.miCelda.avanzar(b);
 		//VEEEEEEEEER SI FUNCA O NO
 		
 	}

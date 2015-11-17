@@ -17,7 +17,7 @@ public class Bomberman extends ElementoEnCelda
 	protected int posX;
 	protected int posY;
 	protected boolean estaVivo;
-	protected Bomba miBomba;
+	protected Bomba miBomba; // Prototipo de bomba
 	protected Terreno terreno;
 	protected Celda celdaAnterior;
 	
@@ -106,15 +106,20 @@ public class Bomberman extends ElementoEnCelda
 	/**
 	 *Método que le permite al jugador poner una, o más, bombas. 
 	 */
-	public void ponerBomba()
+	public Bomba ponerBomba()
 	{
 		if(cantBombasActuales>0)
 		{
+//			miBomba.setPosX(posX);
+//			miBomba.setPosY(posY);
+			Bomba miBomba = new Bomba(terreno);
 			miBomba.setPosX(posX);
 			miBomba.setPosY(posY);
 			terreno.getCelda(posX, posY).ponerBombaEnCelda(miBomba);
 			cantBombasActuales--;
+			return miBomba;
 		}
+		return null;
 	}
 	
 	/**
@@ -150,6 +155,7 @@ public class Bomberman extends ElementoEnCelda
 	public void aumentarCantBombas()
 	{
 		cantBombasSimultaneas++;
+		cantBombasActuales++;
 	}
 
 	@Override

@@ -18,14 +18,15 @@ public class BombaThread extends Thread
 	public void run()
 	{
 		try {
-			bomberman.ponerBomba();
+			Bomba miBomba = bomberman.ponerBomba();
 			juego.actualizarGUI();
 			
 			sleep(3000);
-			Bomba miBomba = bomberman.getBomba();
+//			Bomba miBomba = bomberman.getBomba();
 			int puntos = miBomba.explotar(miBomba.getX(),miBomba.getY());
 			bomberman.addPuntos(puntos);
 			bomberman.agregarBomba();
+			juego.actualizarPuntaje();
 			juego.actualizarGUI();
 			
 		} catch (InterruptedException e) {

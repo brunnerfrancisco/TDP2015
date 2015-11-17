@@ -61,8 +61,11 @@ public class Juego
 		jugador.avanzar(jugador.getX(), jugador.getY()-1);
 		if (jugador.getCelda() != jugador.getCeldaAnterior())
 			actualizarGUI(jugador.getCelda(),jugador.getCeldaAnterior());
+		actualizarPuntaje();
 	}
 	
+	
+
 	
 
 	/**
@@ -72,6 +75,7 @@ public class Juego
 		jugador.avanzar(jugador.getX(), jugador.getY()+1);
 		if (jugador.getCelda() != jugador.getCeldaAnterior())
 			actualizarGUI(jugador.getCelda(),jugador.getCeldaAnterior());
+		actualizarPuntaje();
 	}
 	
 	/**
@@ -81,6 +85,7 @@ public class Juego
 		jugador.avanzar(jugador.getX()+1, jugador.getY());
 		if (jugador.getCelda() != jugador.getCeldaAnterior())
 			actualizarGUI(jugador.getCelda(),jugador.getCeldaAnterior());
+		actualizarPuntaje();
 		
 	}
 	
@@ -91,6 +96,14 @@ public class Juego
 		jugador.avanzar(jugador.getX()-1, jugador.getY());
 		if (jugador.getCelda() != jugador.getCeldaAnterior())
 			actualizarGUI(jugador.getCelda(),jugador.getCeldaAnterior());
+		actualizarPuntaje();
+	}
+	
+	
+	
+	public void actualizarPuntaje() {
+		gui.actualizarPuntaje(jugador.getPuntos());
+		
 	}
 	
 	/**
@@ -156,6 +169,8 @@ public class Juego
 		labelActual2.setIcon(imagenC2);
 //		labelActual.setBounds((c2.getPosX()*tamLabel),(c2.getPosY()*tamLabel),tamLabel,tamLabel);
 		gui.getPanelJuego().add(labelActual2);
+
+		gui.getPanelJuego().repaint();
 	}
 	
 	/**
@@ -220,6 +235,9 @@ public class Juego
 		labelActual.setIcon(imagenC1);
 	//	labelActual.setBounds((c1.getPosX()*tamLabel),(c1.getPosY()*tamLabel),tamLabel,tamLabel);
 		gui.getPanelJuego().add(labelActual);
+
+		gui.getPanelJuego().repaint();
+		
 	}
-	
+
 }

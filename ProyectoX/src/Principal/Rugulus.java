@@ -12,8 +12,8 @@ public class Rugulus  extends Enemigo{
 		terreno = t;
 //		posX = x;
 //		posY = y;
-		//imagen = new ImageIcon(getClass().getResource("/images/Rugulus.jpg"));
-		imagen = new ImageIcon(getClass().getResource("/images/bomberman.png"));
+		imagen = new ImageIcon(getClass().getResource("/images/Rugulus.jpg"));
+		
 		modoDios = false;
 //		miCelda = terreno.getCelda(posX, posY);
 		estaVivo = true;
@@ -39,8 +39,7 @@ public class Rugulus  extends Enemigo{
 	 */
 	public void avanzar() {
 		 Random  rnd = new Random();
-//		 int direccion = rnd.nextInt(4);
-		 int direccion = 3;
+		 int direccion = rnd.nextInt(4);
 		 Celda celdaAAvanzar = terreno.getCelda(posX,posY);
 		 if (direccion == 0)
 			 celdaAAvanzar = terreno.getCelda(posX, posY-1);

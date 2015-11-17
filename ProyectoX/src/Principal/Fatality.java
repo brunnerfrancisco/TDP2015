@@ -7,7 +7,7 @@ import javax.swing.ImageIcon;
  * @author Brunner Francisco, Vercelli Franco, Volpe Leandro.
  *
  */
-public class Fatality extends PowerUps
+public class Fatality extends PowerUp
 {
 
 	/**
@@ -15,7 +15,7 @@ public class Fatality extends PowerUps
 	 */
 	public Fatality()
 	{
-		super.imagen = new ImageIcon(getClass().getResource("/images/Fatality.png"));
+		super.imagen = new ImageIcon(getClass().getResource("/images/fatality.jpg"));
 	}
 	
 	public void avanzar(Bomberman b)
