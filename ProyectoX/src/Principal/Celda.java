@@ -104,6 +104,7 @@ public class Celda
 			b.setX(posX);
 			b.setY(posY);
 			b.setCelda(this);
+			b.setCeldaAnterior(celdaAnterior);
 			this.agregarElementoACelda(b);
 			celdaAnterior.eliminarElementoEnCelda();
 			}
@@ -118,12 +119,24 @@ public class Celda
 	{
 		if (obtenerElem() == null) // celda vacia
 		{
+//			Celda celdaAnterior = e.getCelda(); // PUEDE SER QUE TENGAMOS Q MANEJAR LOS POSX POS Y COMO EN CELDA
+//			
+//			e.setX(posX);
+//			e.setY(posY);
+//			e.setCelda(this);
+//			this.agregarElementoACelda(e);
+//			e.setCeldaAnterior(celdaAnterior);
+//			celdaAnterior.eliminarElementoEnCelda();
+//			System.out.println(celdaAnterior.obtenerElem() == null);
 			Celda celdaAnterior = e.getCelda(); // PUEDE SER QUE TENGAMOS Q MANEJAR LOS POSX POS Y COMO EN CELDA
 			e.setX(posX);
 			e.setY(posY);
 			e.setCelda(this);
+			e.setCeldaAnterior(celdaAnterior);
 			this.agregarElementoACelda(e);
 			celdaAnterior.eliminarElementoEnCelda();
+
+			System.out.println(this.obtenerElem() == null);
 		}
 		else
 		{

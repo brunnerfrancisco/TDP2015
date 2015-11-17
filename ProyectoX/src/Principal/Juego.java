@@ -1,9 +1,12 @@
 package Principal;
+import java.util.Random;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import GUI.GUI;
 import Threaders.BombaThread;
+import Threaders.EnemigoThread;
 
 /**
  * Clase principal del juego. Responsable de iniciar toda la ejecución
@@ -17,6 +20,7 @@ public class Juego
 	protected Terreno terreno;
 	protected GUI gui;
 	protected int tamLabel;
+	protected EnemigoThread hiloEnemigo;
 	/**
 	 * Constructor de la clase, crea una nueva instancia de la misma.
 	 */
@@ -28,6 +32,8 @@ public class Juego
 		//Agrego a bomberman al terreno
 		terreno.getCelda(1, 1).agregarElementoACelda(jugador);
 		gui = g;
+		hiloEnemigo = new EnemigoThread(this);
+		hiloEnemigo.start();
 	}
 	
 	/**
@@ -53,17 +59,19 @@ public class Juego
 	 */
 	public void moverBombermanUP() {
 		jugador.avanzar(jugador.getX(), jugador.getY()-1);
-		System.out.println("Avanzarde Juego pos X" + jugador.getX()+ " y pos y" + jugador.getY());
-		actualizarGUI();
+		if (jugador.getCelda() != jugador.getCeldaAnterior())
+			actualizarGUI(jugador.getCelda(),jugador.getCeldaAnterior());
 	}
 	
+	
+
 	/**
 	 * Mueve al bomberman hacia abajo y actualiza la GUI
 	 */
 	public void moverBombermanDOWN() {
 		jugador.avanzar(jugador.getX(), jugador.getY()+1);
-		System.out.println("Avanzarde Juego pos X" + jugador.getX()+ " y pos y" + jugador.getY());
-		actualizarGUI();
+		if (jugador.getCelda() != jugador.getCeldaAnterior())
+			actualizarGUI(jugador.getCelda(),jugador.getCeldaAnterior());
 	}
 	
 	/**
@@ -71,9 +79,9 @@ public class Juego
 	 */
 	public void moverBombermanRIGHT() {
 		jugador.avanzar(jugador.getX()+1, jugador.getY());
-		actualizarGUI();  //repaint esta denytro de actualizar GUI
-	
-		System.out.println("Avanzarde Juego pos X" + jugador.getX()+ " y pos y" + jugador.getY());
+		if (jugador.getCelda() != jugador.getCeldaAnterior())
+			actualizarGUI(jugador.getCelda(),jugador.getCeldaAnterior());
+		
 	}
 	
 	/**
@@ -81,8 +89,8 @@ public class Juego
 	 */
 	public void moverBombermanLEFT() {
 		jugador.avanzar(jugador.getX()-1, jugador.getY());
-		System.out.println("Avanzarde Juego pos X " + jugador.getX()+ " y pos y " + jugador.getY());
-		actualizarGUI(); 
+		if (jugador.getCelda() != jugador.getCeldaAnterior())
+			actualizarGUI(jugador.getCelda(),jugador.getCeldaAnterior());
 	}
 	
 	/**
@@ -115,6 +123,41 @@ public class Juego
 		gui.getPanelJuego().repaint();
 	}
 	
+	public void actualizarGUI(Celda c1, Celda c2) {
+		ElementoEnCelda elementoC1= c1.obtenerElem();
+		ImageIcon imagenC1;
+		if (elementoC1 == null)
+		{
+			 imagenC1= new ImageIcon(getClass().getResource("/images/Transitable.jpg"));
+		}
+		else
+		{
+			imagenC1 = elementoC1.getImagen();
+			
+		}
+		JLabel labelActual = gui.getLabelEnMatriz(c1.getPosX(),c1.getPosY());
+		
+		labelActual.setIcon(imagenC1);
+//		labelActual.setBounds((c1.getPosX()*tamLabel),(c1.getPosY()*tamLabel),tamLabel,tamLabel);
+		
+		gui.getPanelJuego().add(labelActual);
+		
+		ElementoEnCelda elementoC2= c2.obtenerElem();
+		ImageIcon imagenC2;
+		if (elementoC2 == null)
+		{
+			 imagenC2= new ImageIcon(getClass().getResource("/images/Transitable.jpg"));
+		}
+		else
+		{
+			imagenC2 = elementoC2.getImagen();
+		}
+		JLabel labelActual2 = gui.getLabelEnMatriz(c2.getPosX(),c2.getPosY());
+		labelActual2.setIcon(imagenC2);
+//		labelActual.setBounds((c2.getPosX()*tamLabel),(c2.getPosY()*tamLabel),tamLabel,tamLabel);
+		gui.getPanelJuego().add(labelActual2);
+	}
+	
 	/**
 	 * Pone una bomba en el terreno en la celda actual del bomberman
 	 */
@@ -126,6 +169,57 @@ public class Juego
 			t.start();
 		}
 		
+	}
+
+	public void agregarEnemigo(Enemigo e) {
+		 Random  rnd = new Random();
+		 int fila = 1+rnd.nextInt(29);
+		 int col = 1+rnd.nextInt(11);
+		 while(((fila % 2 == 0) && (col % 2 == 0)) || (fila < 9 && col < 5))
+		 {
+			  fila = 1+rnd.nextInt(29);
+			  col = 1+rnd.nextInt(11);
+		 }
+			 Celda c = terreno.getCelda(1,5);
+		 	 c.agregarElementoACelda(e);
+			 e.setCelda(c);
+			 e.setCeldaAnterior(c);
+			 e.setX(c.getPosX());
+			 e.setY(c.getPosY());
+		 
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public void actualizarGUI(Celda c1) {
+		ElementoEnCelda elementoC1= c1.obtenerElem();
+		ImageIcon imagenC1;
+		if (elementoC1 == null)
+		{ 
+			 imagenC1= new ImageIcon(getClass().getResource("/images/Transitable.jpg"));
+		}
+		else
+		{
+			imagenC1 = elementoC1.getImagen();
+			if (imagenC1 == null)
+				System.out.println("NO HAY IMAGEN");
+			
+		}
+		JLabel labelActual = gui.getLabelEnMatriz(c1.getPosX(),c1.getPosY());
+		
+		labelActual.setIcon(imagenC1);
+	//	labelActual.setBounds((c1.getPosX()*tamLabel),(c1.getPosY()*tamLabel),tamLabel,tamLabel);
+		gui.getPanelJuego().add(labelActual);
 	}
 	
 }

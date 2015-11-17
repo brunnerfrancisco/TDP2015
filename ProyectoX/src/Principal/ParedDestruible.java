@@ -35,7 +35,6 @@ public class ParedDestruible extends Pared
 			b.setCelda(super.miCelda);
 			miCelda.agregarElementoACelda(b);
 			celdaAnterior.eliminarElementoEnCelda();
-			//	Falta actualizar la grafica
 		}
 	}
 	@Override
@@ -48,7 +47,6 @@ public class ParedDestruible extends Pared
 			e.setCelda(super.miCelda);
 			miCelda.agregarElementoACelda(e);
 			celdaAnterior.eliminarElementoEnCelda();
-			//	Falta actualizar la grafica
 		}
 	}
 	

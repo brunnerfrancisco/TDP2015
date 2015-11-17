@@ -6,19 +6,24 @@ import javax.swing.ImageIcon;
 
 public class Rugulus  extends Enemigo{
 
-	public Rugulus(Terreno t, int x, int y)
+	// CUANDO SE AGREGA EN JUEGO A TERRENO HAY Q SETEAR X,Y Y LA CELDA
+	public Rugulus(Terreno t)//, int x, int y)
 	{
 		terreno = t;
-		posX = x;
-		posY = y;
-		imagen = new ImageIcon(getClass().getResource("/images/Rugulus.jpg"));
+//		posX = x;
+//		posY = y;
+		//imagen = new ImageIcon(getClass().getResource("/images/Rugulus.jpg"));
+		imagen = new ImageIcon(getClass().getResource("/images/bomberman.png"));
 		modoDios = false;
-		miCelda = terreno.getCelda(posX, posY);
+//		miCelda = terreno.getCelda(posX, posY);
+		estaVivo = true;
+		
 	}
 	
 	@Override
 	public int destruirse() {
 		super.miCelda.eliminarElementoEnCelda();
+		estaVivo = false;
 		return 15;
 		
 	}
@@ -34,7 +39,8 @@ public class Rugulus  extends Enemigo{
 	 */
 	public void avanzar() {
 		 Random  rnd = new Random();
-		 int direccion = rnd.nextInt() * 4;
+//		 int direccion = rnd.nextInt(4);
+		 int direccion = 3;
 		 Celda celdaAAvanzar = terreno.getCelda(posX,posY);
 		 if (direccion == 0)
 			 celdaAAvanzar = terreno.getCelda(posX, posY-1);
@@ -46,5 +52,7 @@ public class Rugulus  extends Enemigo{
 			 celdaAAvanzar = terreno.getCelda(posX+1, posY);
 		 celdaAAvanzar.avanzar(this);
 	}
+
+	
 
 }

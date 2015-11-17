@@ -19,6 +19,7 @@ public class Bomberman extends ElementoEnCelda
 	protected boolean estaVivo;
 	protected Bomba miBomba;
 	protected Terreno terreno;
+	protected Celda celdaAnterior;
 	
 	/**
 	 * Contructor de la clase, crea una nueva instancia de la misma.
@@ -35,6 +36,7 @@ public class Bomberman extends ElementoEnCelda
 		terreno=t;
 		miBomba=new Bomba(t);
 		miCelda = terreno.getCelda(1, 1);
+		celdaAnterior = terreno.getCelda(1, 1);
 		imagen = new ImageIcon(getClass().getResource("/images/bomberman.png"));
 		
 	}
@@ -200,6 +202,17 @@ public class Bomberman extends ElementoEnCelda
 	public void addPuntos(int p) {
 			puntaje+=p;
 	}
+
+	public Celda getCeldaAnterior() {
+		return celdaAnterior;
+	}
+
+	public void setCeldaAnterior(Celda c) {
+		celdaAnterior = c;
+		
+	}
+
+	
 
 	
 }

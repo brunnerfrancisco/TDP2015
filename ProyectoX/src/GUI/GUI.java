@@ -57,8 +57,6 @@ public class GUI extends JFrame{
 	 */
 	public GUI()
 	{
-		juego= new Juego(this);
-		
 		matrizLabel = new JLabel[cantColumnas][cantFilas];
 		for (int i = 0; i < cantColumnas; i++)
 		{
@@ -67,9 +65,7 @@ public class GUI extends JFrame{
 				matrizLabel[i][j] = new JLabel();
 			}
 		}
-		
 		super.setTitle("BOMBERMAN - Brunner Vercelli Volpe");
-		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(anchoTotal, altoTotal);
 		contentPane = new JPanel();
@@ -83,6 +79,8 @@ public class GUI extends JFrame{
 		panelJuego.setBounds(0, 0, anchoJuego, anchoTotal);
 		panelJuego.setBorder(new EmptyBorder(0,0,0,0));
 		contentPane.add(panelJuego,BorderLayout.CENTER);
+		
+		juego= new Juego(this);
 		
 		panelInfo = new JPanel();
 		panelInfo.setLayout(new GridLayout(2,1));

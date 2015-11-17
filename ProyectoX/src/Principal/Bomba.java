@@ -91,74 +91,72 @@ public class Bomba extends ElementoEnCelda
 	{
 		
 		terreno.getCelda(x, y).eliminarElementoEnCelda();
-	
-		/*
-							int i=x;
-							int puntos = 0;
-							boolean destrui=true;
-							ElementoEnCelda elementoCelda;
-							while (i<=(x+alcance)&&(destrui))
-							{
-								elementoCelda =terreno.getCelda(i, y).obtenerElem();
-								if(elementoCelda!=null)
-								{
-									puntos = puntos + elementoCelda.destruirse();
-									if(elementoCelda!=null)
-									{
-										destrui=false;
-									}
-								}
-								
-								i++;
-							}
-							i=x;
-							destrui=true;
-							while (i>=(x-alcance)&&(destrui))
-							{
-								elementoCelda =terreno.getCelda(i, y).obtenerElem();
-								if(elementoCelda!=null)
-								{
-									puntos = puntos + elementoCelda.destruirse();
-									if(	elementoCelda!=null)
-									{
-										destrui=false;
-									}
-								}
-								i--;
-							}
-							int j=y;
-							destrui=true;
-							while (j<=(y+alcance)&&(destrui))
-							{
-									elementoCelda=terreno.getCelda(x, j).obtenerElem();
-								if(	elementoCelda!=null)
-								{
-									puntos = puntos + elementoCelda.destruirse();
-									if(	elementoCelda!=null)
-									{
-										destrui=false;
-									}
-								}
-								j++;
-							}
-							j=y;
-							destrui=true;
-							while (j>=(y-alcance)&&(destrui))
-							{
-								elementoCelda=terreno.getCelda(x, j).obtenerElem();
-								if(	elementoCelda!=null)
-								{
-									puntos = puntos + elementoCelda.destruirse();
-									if(elementoCelda!=null)
-									{
-										destrui=false;
-									}
-								}
-								j--;
-							}
-							b.sumarPuntos(puntos);
-					*/
-		return 0;
+			int i=x;
+			int puntos = 0;
+			boolean destrui=true;
+			ElementoEnCelda elementoCelda;
+			while (i<=(x+alcance)&&(destrui))
+			{
+				elementoCelda =terreno.getCelda(i, y).obtenerElem();
+				if(elementoCelda!=null)
+				{
+					puntos = puntos + elementoCelda.destruirse();
+					if(elementoCelda!=null)
+					{
+						destrui=false;
+					}
+				}
+				
+				i++;
+			}
+			i=x;
+			destrui=true;
+			while (i>=(x-alcance)&&(destrui))
+			{
+				elementoCelda =terreno.getCelda(i, y).obtenerElem();
+				if(elementoCelda!=null)
+				{
+					puntos = puntos + elementoCelda.destruirse();
+					if(	elementoCelda!=null)
+					{
+						destrui=false;
+					}
+				}
+				i--;
+			}
+			int j=y;
+			destrui=true;
+			while (j<=(y+alcance)&&(destrui))
+			{
+					elementoCelda=terreno.getCelda(x, j).obtenerElem();
+				if(	elementoCelda!=null)
+				{
+					puntos = puntos + elementoCelda.destruirse();
+					if(	elementoCelda!=null)
+					{
+						destrui=false;
+					}
+				}
+				j++;
+			}
+			j=y;
+			destrui=true;
+			while (j>=(y-alcance)&&(destrui))
+			{
+				elementoCelda=terreno.getCelda(x, j).obtenerElem();
+				if(	elementoCelda!=null)
+				{
+					puntos = puntos + elementoCelda.destruirse();
+					if(elementoCelda!=null)
+					{
+						destrui=false;
+					}
+				}
+				j--;
+			}
+			
+					
+		return puntos;
 	}
 	
 	/**

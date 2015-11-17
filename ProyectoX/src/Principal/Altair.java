@@ -6,14 +6,15 @@ import javax.swing.ImageIcon;
 
 public class Altair extends Enemigo{
 
-	public Altair(Terreno t, int x, int y)
+	public Altair(Terreno t)//, int x, int y)
 	{
 		terreno = t;
-		posX = x;
-		posY = y;
-		imagen = new ImageIcon(getClass().getResource("/images/Altair.jpg"));
+//		posX = x;
+//		posY = y;
+//		imagen = new ImageIcon(getClass().getResource("/images/Altair.jpg"));
 		modoDios = true;
-		miCelda = terreno.getCelda(posX, posY);
+//		miCelda = terreno.getCelda(posX, posY);
+		estaVivo = true;
 	}
 	
 	
@@ -26,7 +27,7 @@ public class Altair extends Enemigo{
 	 * Si direccion es 3, intenta avanzar hacia Derecha.
 	 */
 	public void avanzar() {
-		Random  rnd = new Random();
+		 Random  rnd = new Random();
 		 int direccion = (int)(rnd.nextInt() * 4);
 		 Celda celdaAAvanzar = terreno.getCelda(posX,posY);
 		 if (direccion == 0)
@@ -43,6 +44,7 @@ public class Altair extends Enemigo{
 	@Override
 	public int destruirse() {
 		super.miCelda.eliminarElementoEnCelda();
+		estaVivo = false;
 		return 20;
 		
 	}

@@ -15,7 +15,8 @@ public abstract class Enemigo extends ElementoEnCelda
 	protected int posX;
 	protected int posY;
 	protected Terreno terreno;
-	protected ImageIcon imagen;
+	protected boolean estaVivo;
+	protected Celda celdaAnterior;
 	
 	/**
 	 * Constructor de la clase, crea una nueva instancia de la misma.
@@ -70,6 +71,18 @@ public abstract class Enemigo extends ElementoEnCelda
 	public void avanzar(Bomberman b) {
 		b.destruirse();
 	}
+
+	public boolean estaVivo() {
+		return estaVivo;
+	}
 	
+	public Celda getCeldaAnterior() {
+		return celdaAnterior;
+	}
+
+	public void setCeldaAnterior(Celda c) {
+		celdaAnterior = c;
+		
+	}
 	
 }
