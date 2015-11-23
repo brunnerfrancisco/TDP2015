@@ -27,6 +27,7 @@ public class BombaThread extends Thread
 			bomberman.addPuntos(puntos);
 			bomberman.agregarBomba();
 			juego.actualizarPuntaje();
+			juego.quitarEnemigo();
 			juego.actualizarGUI();
 			
 		} catch (InterruptedException e) {

@@ -5,16 +5,17 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 
 public class Altair extends Enemigo{
-
-	public Altair(Terreno t)//, int x, int y)
+	protected int posEnAltair;
+	public Altair(Terreno t, int p)//, int x, int y)
 	{
 		terreno = t;
 //		posX = x;
 //		posY = y;
-//		imagen = new ImageIcon(getClass().getResource("/images/Altair.jpg"));
+		imagen = new ImageIcon(getClass().getResource("/images/Altair.jpg"));
 		modoDios = true;
-//		miCelda = terreno.getCelda(posX, posY);
+		posEnAltair = p;
 		estaVivo = true;
+//		miCelda = terreno.getCelda(posX, posY);
 	}
 	
 	
@@ -28,7 +29,7 @@ public class Altair extends Enemigo{
 	 */
 	public void avanzar() {
 		 Random  rnd = new Random();
-		 int direccion = (int)(rnd.nextInt() * 4);
+		 int direccion = rnd.nextInt(4);
 		 Celda celdaAAvanzar = terreno.getCelda(posX,posY);
 		 if (direccion == 0)
 			 celdaAAvanzar = terreno.getCelda(posX, posY-1);
@@ -47,6 +48,13 @@ public class Altair extends Enemigo{
 		estaVivo = false;
 		return 20;
 		
+	}
+
+
+
+
+	public int getPosEnAltair() {
+		return posEnAltair;
 	}
 
 }

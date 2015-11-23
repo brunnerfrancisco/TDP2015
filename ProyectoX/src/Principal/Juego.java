@@ -19,7 +19,7 @@ public class Juego
 	protected Bomberman jugador;
 	protected Terreno terreno;
 	protected GUI gui;
-	protected int tamLabel;
+	protected int anchoLabel, altoLabel;
 	protected EnemigoThread hiloEnemigo;
 	/**
 	 * Constructor de la clase, crea una nueva instancia de la misma.
@@ -111,7 +111,9 @@ public class Juego
 	 */
 	public void actualizarGUI()
 	{	
-		tamLabel = gui.getTamLabel();
+		anchoLabel = gui.getAnchoLabel();
+
+		altoLabel = gui.getAltoLabel();
 		ImageIcon imagenCelda;
 		for (int i = 0; i < 31 ; i++)
 		{
@@ -128,7 +130,7 @@ public class Juego
 				}
 				JLabel labelActual = gui.getLabelEnMatriz(i,j);
 				labelActual.setIcon(imagenCelda);
-				labelActual.setBounds((i*tamLabel),(j*tamLabel),tamLabel,tamLabel);
+				labelActual.setBounds((i*anchoLabel),(j*altoLabel),anchoLabel,altoLabel);
 				
 				gui.getPanelJuego().add(labelActual);
 			}
@@ -195,7 +197,7 @@ public class Juego
 			  fila = 1+rnd.nextInt(29);
 			  col = 1+rnd.nextInt(11);
 		 }
-			 Celda c = terreno.getCelda(1,5);
+			 Celda c = terreno.getCelda(fila,col);
 		 	 c.agregarElementoACelda(e);
 			 e.setCelda(c);
 			 e.setCeldaAnterior(c);
@@ -240,4 +242,56 @@ public class Juego
 		
 	}
 
+	public void quitarEnemigo() {
+		Rugulus[] mR = hiloEnemigo.getMisRugulus();
+		int pos = 0;
+		for(Rugulus r : mR)
+		{
+			if (r != null)
+			{
+				if (!r.estaVivo())
+				{
+					pos = r.getPosEnRugulus();
+					mR[pos] = null;
+					hiloEnemigo.restarEnemigo();
+				}
+			}
+		}
+		Altair[] mA = hiloEnemigo.getMisAltair();
+		pos = 0;
+		for(Altair a: mA)
+		{
+			if (a != null)
+			{
+				if (!a.estaVivo())
+				{
+					pos = a.getPosEnAltair();
+					mA[pos] = null;
+					hiloEnemigo.restarEnemigo();
+				}
+			}
+		}
+		Sirius mS = hiloEnemigo.getMiSirius();
+		if (mS !=null)
+		{
+			if (!mS.estaVivo())
+			{	
+				hiloEnemigo.matarSirius();
+				mS = null;
+				hiloEnemigo.restarEnemigo();
+			}
+		}
+	}
+
+	public void agregarEnemigo(Sirius e, int i, int j) {
+		 Celda c = terreno.getCelda(i,j);
+	 	 c.agregarElementoACelda(e);
+		 e.setCelda(c);
+		 e.setCeldaAnterior(c);
+		 e.setX(c.getPosX());
+		 e.setY(c.getPosY());
+		
+	}
+
+	
 }

@@ -6,8 +6,9 @@ public class EnemigoThread extends Thread{
 
 	protected Enemigo enemigo;
 	protected Juego juego;
-	protected  Rugulus [] misRugulus;
+	protected Rugulus [] misRugulus;
 	protected Altair [] misAltair;
+	protected Sirius miSirius;
 	protected int cantEnemigos;
 	/**
 	 * Constructor de la clase, crea una nueva instancia de la misma.
@@ -20,47 +21,75 @@ public class EnemigoThread extends Thread{
 		misAltair = new Altair[3];
 		for (int i = 0; i < 3; i++)
 		{
-			misRugulus[i] = new Rugulus(juego.getTerreno());
-			misAltair[i] = new Altair(juego.getTerreno());
+			misRugulus[i] = new Rugulus(juego.getTerreno(), i); // i es la pos en el arreglo para eliminarlo mas rapido
+			misAltair[i] = new Altair(juego.getTerreno(), i);
 		}
-//		for (int i = 0; i < 3; i++)
-//		{
-//			juego.agregarEnemigo(misRugulus[i]);
-//			juego.agregarEnemigo(misAltair[i]);
-//		}
-//		cantEnemigos = 6;
-			juego.agregarEnemigo(misRugulus[0]);
+		for (int i = 0; i < 3; i++)
+		{
+			juego.agregarEnemigo(misRugulus[i]);
+			juego.agregarEnemigo(misAltair[i]);
+		}
+		miSirius = new Sirius(juego.getTerreno(), juego.getBomberman());
+		juego.agregarEnemigo(miSirius,29,11);
+		cantEnemigos = 7;
 		this.juego = juego;
+	}
+	public Rugulus[] getMisRugulus(){
+		return 	misRugulus;
+	}
+	public Altair[] getMisAltair(){
+		return misAltair;
 	}
 	
 	public void run()
 	{
 		while(true){
 			try {
-//			for (Rugulus r: misRugulus)
-//			{
-			
-				sleep(1000);
-				misRugulus[0].avanzar();	
-				if (misRugulus[0].getCelda() != misRugulus[0].getCeldaAnterior()){
-					juego.actualizarGUI(misRugulus[0].getCelda(), misRugulus[0].getCeldaAnterior());
-					//juego.actualizarGUI();
+
+				sleep(700);
+				if (miSirius !=null){
+					miSirius.avanzar();
+					if (miSirius.getCelda() != miSirius.getCeldaAnterior())
+						juego.actualizarGUI(miSirius.getCelda(), miSirius.getCeldaAnterior());
 				}
-//				    juego.actualizarGUI();
-					
-				System.out.println(misRugulus[0].getX()+" "+ misRugulus[0].getY());
+					for (Rugulus r: misRugulus)
+				{
+					if (r!=null){
+						r.avanzar();	
+						if (r.getCelda() != r.getCeldaAnterior()){
+							juego.actualizarGUI(r.getCelda(), r.getCeldaAnterior());
+							//juego.actualizarGUI();
+						}
+					}
+				}
+			
+				for (Altair a: misAltair)
+				{
+					if (a != null){
+						a.avanzar();
+						if (a.getCelda() != a.getCeldaAnterior()){
+							juego.actualizarGUI(a.getCelda(), a.getCeldaAnterior());
+						}
+					}
+				}
 			}
-//			}
-//			for (Altair a: misAltair)
-//			{
-//				a.avanzar();
-//				juego.actualizarGUI();
-//				sleep(1000);
-//			}
 		catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		}
+		
 	}
+	public void restarEnemigo() {
+		cantEnemigos--;
+	}
+	public Sirius getMiSirius() {
+		return miSirius;
+	}
+	public void matarSirius() {
+		miSirius = null;
+		
+	}
+
+	
 }

@@ -135,8 +135,6 @@ public class Celda
 			e.setCeldaAnterior(celdaAnterior);
 			this.agregarElementoACelda(e);
 			celdaAnterior.eliminarElementoEnCelda();
-
-			System.out.println(this.obtenerElem() == null);
 		}
 		else
 		{

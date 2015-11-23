@@ -30,11 +30,12 @@ public class GUI extends JFrame{
 	private final static int cantFilas = 13;
 	private final static int cantColumnas = 31;
 	
-	private final static int anchoTotal = 850;
-	private final static int altoTotal = 325;
+	private final static int anchoTotal = 1015;
+	private final static int altoTotal = 570;
 	
-	private final static int anchoJuego = 700;
-	private final static int tamLabel = 22;
+	private final static int anchoJuego = 950;
+	private final static int anchoLabel = 29;
+	private final static int altoLabel = 40;
 	
 	/**
 	 * Launch the application.
@@ -157,7 +158,7 @@ public class GUI extends JFrame{
 					imagenCelda = elementoCelda.getImagen();
 				}
 				matrizLabel[i][j].setIcon(imagenCelda);
-				matrizLabel[i][j].setBounds((i*tamLabel),(j*tamLabel),tamLabel,tamLabel);
+				matrizLabel[i][j].setBounds((i*anchoLabel),(j*altoLabel),anchoLabel,altoLabel);
 				
 				panelJuego.add(matrizLabel[i][j]);
 			}
@@ -218,16 +219,19 @@ public class GUI extends JFrame{
 		return panelJuego;
 	}
 
-	public int getTamLabel() 
+	public int getAnchoLabel() 
 	{
-		return tamLabel;
+		return anchoLabel;
 	}
-	
+	public int getAltoLabel() 
+	{
+		return altoLabel;
+	}
 	public void actualizarPuntaje(int p) 
 	{
 		String puntosAct = puntajeLabelContenido.getText();
 		int puntos= Integer.parseInt(puntosAct);
-		puntos = puntos + p;
+		puntos =  p;
 		puntosAct = Integer.toString(puntos);
 		puntajeLabelContenido.setText(puntosAct);
 		

@@ -37,7 +37,7 @@ public class Bomberman extends ElementoEnCelda
 		miBomba=new Bomba(t);
 		miCelda = terreno.getCelda(1, 1);
 		celdaAnterior = terreno.getCelda(1, 1);
-		imagen = new ImageIcon(getClass().getResource("/images/bomberman.png"));
+		imagen = new ImageIcon(getClass().getResource("/images/bomberman.jpg"));
 		
 	}
 	
@@ -110,8 +110,6 @@ public class Bomberman extends ElementoEnCelda
 	{
 		if(cantBombasActuales>0)
 		{
-//			miBomba.setPosX(posX);
-//			miBomba.setPosY(posY);
 			Bomba miBomba = new Bomba(terreno);
 			miBomba.setPosX(posX);
 			miBomba.setPosY(posY);
@@ -158,6 +156,10 @@ public class Bomberman extends ElementoEnCelda
 		cantBombasActuales++;
 	}
 
+	public int getSimultaneas()
+	{
+		return cantBombasSimultaneas;
+	}
 	@Override
 	public void avanzar(Bomberman b) {
 		// TODO Auto-generated method stub
@@ -216,6 +218,19 @@ public class Bomberman extends ElementoEnCelda
 	public void setCeldaAnterior(Celda c) {
 		celdaAnterior = c;
 		
+	}
+
+	public void setSimultaneas(int i) {
+		cantBombasSimultaneas = i;
+		
+	}
+
+	public void setDios(boolean b) {
+		modoDios=b;
+	}
+
+	public void setCantBombas(int i) {
+		cantBombasActuales = i;
 	}
 
 	

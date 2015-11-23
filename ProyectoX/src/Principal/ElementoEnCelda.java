@@ -26,5 +26,8 @@ public abstract class ElementoEnCelda
 	public ImageIcon getImagen() {
 		return imagen;
 	}
-
+	public void setImagen(ImageIcon i)
+	{
+		imagen = i;
+	}
 }

@@ -2,6 +2,8 @@ package Principal;
 
 import java.util.Random;
 
+import javax.swing.ImageIcon;
+
 /**
  * Clase que se encarga de la lógica y ubicación de todos los elementos en el mapa.
  * @author Brunner Francisco, Vercelli Franco, Volpe Leandro.
@@ -18,15 +20,29 @@ public class Terreno
 	{
 		matriz= new Celda[31][13];
 		// Establezco los limites para el terreno
-		for (int i = 0; i< 13 ; i++)
+		for (int i = 0; i< 12 ; i++)
 		{
-			matriz[0][i] = new Celda(0,i, new ParedNoDestruible(),this);
-			matriz[30][i] = new Celda(30,i, new ParedNoDestruible(),this);
+				matriz[0][i] = new Celda(0,i, new ParedNoDestruible(0),this);
+				matriz[30][i] = new Celda(30,i, new ParedNoDestruible(0),this);
 		}
+		
 		for (int i = 0; i< 31 ; i++)
 		{
-			matriz[i][12] = new Celda(i,12,new ParedNoDestruible(),this);
-			matriz[i][0] = new Celda(i,0,new ParedNoDestruible(),this);
+			if (i == 0){
+				matriz[i][12] = new Celda(i,12, new ParedNoDestruible(3),this);
+				matriz[i][0] = new Celda(i,0, new ParedNoDestruible(4),this);
+			}
+			else{
+				if (i == 30)
+				{
+					matriz[i][12] = new Celda(i,12,new ParedNoDestruible(2),this);
+					matriz[i][0] = new Celda(i,0,new ParedNoDestruible(5),this);
+				}else{
+					matriz[i][12] = new Celda(i,12,new ParedNoDestruible(1),this);
+					matriz[i][0] = new Celda(i,0,new ParedNoDestruible(1),this);
+				
+				}
+			}
 		}
 		
 		//Creo las Celdas que son transitables
@@ -41,8 +57,7 @@ public class Terreno
 					matriz[i][j] = new Celda(i,j, null,this);
 			}
 			
-		}	
-		
+		}
 		//Pongo los PowerUp sobre celdas transitables
 		 this.agregarPowerUps();
 		 
