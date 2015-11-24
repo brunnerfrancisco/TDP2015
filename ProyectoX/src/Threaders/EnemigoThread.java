@@ -52,26 +52,28 @@ public class EnemigoThread extends Thread{
 					if (miSirius.getCelda() != miSirius.getCeldaAnterior())
 						juego.actualizarGUI(miSirius.getCelda(), miSirius.getCeldaAnterior());
 				}
-					for (Rugulus r: misRugulus)
-				{
-					if (r!=null){
-						r.avanzar();	
-						if (r.getCelda() != r.getCeldaAnterior()){
-							juego.actualizarGUI(r.getCelda(), r.getCeldaAnterior());
-							//juego.actualizarGUI();
-						}
-					}
-				}
-			
 				for (Altair a: misAltair)
 				{
 					if (a != null){
 						a.avanzar();
 						if (a.getCelda() != a.getCeldaAnterior()){
-							juego.actualizarGUI(a.getCelda(), a.getCeldaAnterior());
+							juego.actualizarGUI(a.getCelda());
+							juego.actualizarGUI(a.getCeldaAnterior());
 						}
 					}
 				}
+				for (Rugulus r: misRugulus)
+				{
+					if (r!=null){
+						r.avanzar();	
+						if (r.getCelda() != r.getCeldaAnterior()){
+							juego.actualizarGUI(r.getCelda(),r.getCeldaAnterior());
+							//juego.actualizarGUI();
+						}
+					}
+				}
+			
+				
 			}
 		catch (InterruptedException e) {
 			// TODO Auto-generated catch block

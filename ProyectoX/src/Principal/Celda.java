@@ -88,7 +88,7 @@ public class Celda
 	 * Agrega al bomberman como elemento de la celda en caso de ser posible
 	 * @param b
 	 */
-	public void avanzar(Bomberman b)
+	public synchronized void avanzar(Bomberman b)
 	{		
 		if (obtenerElem() == null) // celda vacia
 			{
@@ -115,7 +115,7 @@ public class Celda
 	}
 	
 	
-	public void avanzar(Enemigo e)
+	public synchronized void avanzar(Enemigo e)
 	{
 		if (obtenerElem() == null) // celda vacia
 		{

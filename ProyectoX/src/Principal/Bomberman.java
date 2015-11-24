@@ -143,8 +143,7 @@ public class Bomberman extends ElementoEnCelda
 	 */
 	public void duplicarAlcance()
 	{
-		int alcanceNuevo = miBomba.getAlcance() *2;
-		miBomba.setAlcance(alcanceNuevo);
+		miBomba.addAlcance();
 	}
 	
 	/**

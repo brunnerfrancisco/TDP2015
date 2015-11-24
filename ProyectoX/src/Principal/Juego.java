@@ -109,7 +109,7 @@ public class Juego
 	/**
 	 * Atuliza los componentes graficos de la GUI
 	 */
-	public void actualizarGUI()
+	public synchronized void actualizarGUI()
 	{	
 		anchoLabel = gui.getAnchoLabel();
 
@@ -138,7 +138,7 @@ public class Juego
 		gui.getPanelJuego().repaint();
 	}
 	
-	public void actualizarGUI(Celda c1, Celda c2) {
+	public synchronized void actualizarGUI(Celda c1, Celda c2) {
 		ElementoEnCelda elementoC1= c1.obtenerElem();
 		ImageIcon imagenC1;
 		if (elementoC1 == null)
@@ -218,7 +218,7 @@ public class Juego
 	
 	
 	
-	public void actualizarGUI(Celda c1) {
+	public synchronized void actualizarGUI(Celda c1) {
 		ElementoEnCelda elementoC1= c1.obtenerElem();
 		ImageIcon imagenC1;
 		if (elementoC1 == null)
@@ -242,7 +242,7 @@ public class Juego
 		
 	}
 
-	public void quitarEnemigo() {
+	public synchronized void quitarEnemigo() {
 		Rugulus[] mR = hiloEnemigo.getMisRugulus();
 		int pos = 0;
 		for(Rugulus r : mR)

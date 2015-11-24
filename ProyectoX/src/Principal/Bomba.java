@@ -28,6 +28,7 @@ public class Bomba extends ElementoEnCelda
 		tiempo=2500;
 		terreno=t;
 		imagen = new ImageIcon(getClass().getResource("/images/bomba2.gif"));
+		
 	}
 	
 	/**
@@ -43,9 +44,9 @@ public class Bomba extends ElementoEnCelda
 	 * Método que setea el alcance de la explosión de la bomba.
 	 * @param a, de tipo entero.
 	 */
-	public void setAlcance(int a)
+	public void addAlcance()
 	{
-		alcance=a;
+		alcance++;
 	}
 	
 	/**
@@ -84,10 +85,12 @@ public class Bomba extends ElementoEnCelda
 		return posY;
 	}
 	
+	
+	
 	/**
 	 * Método que maneja la explosión de las bombas.
 	 */
-	public int explotar(int x, int y)
+/*	public int explotar(int x, int y)
 	{
 		
 		    terreno.getCelda(x, y).eliminarElementoEnCelda();
@@ -158,6 +161,8 @@ public class Bomba extends ElementoEnCelda
 					
 		return puntos;
 	}
+	**/
+	
 	
 	/**
 	 * 
@@ -191,5 +196,10 @@ public class Bomba extends ElementoEnCelda
 	 */
 	public void setPosY(int posY) {
 		this.posY = posY;
+	}
+
+	public void setAlcance(int a) {
+		alcance=a;
+		
 	}
 }
