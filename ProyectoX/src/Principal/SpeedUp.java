@@ -29,12 +29,4 @@ public class SpeedUp extends PowerUp
 		
 	}
 
-
-	@Override
-	public ImageIcon getImagen() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
 }

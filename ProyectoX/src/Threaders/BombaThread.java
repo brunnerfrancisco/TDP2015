@@ -94,24 +94,26 @@ public class BombaThread extends Thread
 		}
 		int j=y+1;
 		destrui=false;
-//		while (j<=(y+alcance)&&(!destrui))
-//		{
-//				celda = t.getCelda(x, j);
-//				elementoCelda= celda.obtenerElem();
-//			if(	elementoCelda!=null)
-//			{
-//				puntos = puntos + elementoCelda.destruirse();
-//				destrui=true;
-//			}
-//
-//			exp = new ExplosionGrafica(1);
-//			celda.agregarElementoACelda(exp);
-//			j++;
-//		}
+		while (j<=(y+alcance)&&(!destrui))
+		{
+			yPos++;
+			celda = t.getCelda(x, j);
+				elementoCelda= celda.obtenerElem();
+			if(	elementoCelda!=null)
+			{
+				puntos = puntos + elementoCelda.destruirse();
+				destrui=true;
+			}
+
+			exp = new ExplosionGrafica(1);
+			celda.agregarElementoACelda(exp);
+			j++;
+		}
 		j=y-1;
 		destrui=false;
-		while (j>=(y-alcance)&&(destrui))
+		while (j>=(y-alcance)&&(!destrui))
 		{
+			yNeg++;
 			celda = t.getCelda(x, j);
 			elementoCelda= celda.obtenerElem();
 			if(	elementoCelda!=null)
@@ -145,6 +147,18 @@ public class BombaThread extends Thread
 		{
 			celda = t.getCelda(i, y);
 			elementoCelda =celda.obtenerElem();
+			celda.eliminarElementoEnCelda();
+		}
+		for(int j = y+1; j <= y+yPos; j++)
+		{
+			celda=t.getCelda(x, j);
+			elementoCelda=celda.obtenerElem();
+			celda.eliminarElementoEnCelda();
+		}
+		for(int j = y-yNeg; j <= y-1; j++)
+		{
+			celda=t.getCelda(x, j);
+			elementoCelda=celda.obtenerElem();
 			celda.eliminarElementoEnCelda();
 		}
 		

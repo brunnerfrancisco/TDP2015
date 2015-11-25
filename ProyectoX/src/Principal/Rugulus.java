@@ -43,10 +43,14 @@ public class Rugulus  extends Enemigo{
 			 celdaAAvanzar = terreno.getCelda(posX, posY-1);
 		 if (direccion == 1)
 			 celdaAAvanzar = terreno.getCelda(posX, posY+1);
-		 if (direccion == 2)
+		 if (direccion == 2){
 			 celdaAAvanzar = terreno.getCelda(posX-1,posY);
-		 if (direccion == 3)
+			 imagen = new ImageIcon(getClass().getResource("/images/RugulusL.jpg"));
+		 }
+		 if (direccion == 3){
 			 celdaAAvanzar = terreno.getCelda(posX+1, posY);
+			 imagen = new ImageIcon(getClass().getResource("/images/Rugulus.jpg"));
+		 }
 		 celdaAAvanzar.avanzar(this);
 	}
 

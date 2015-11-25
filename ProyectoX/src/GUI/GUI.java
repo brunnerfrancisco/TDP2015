@@ -30,9 +30,9 @@ public class GUI extends JFrame{
 	private final static int cantFilas = 13;
 	private final static int cantColumnas = 31;
 	
-	private final static int anchoTotal = 1015;
-	private final static int altoTotal = 570;
-	
+	private final static int anchoTotal = 920;
+	private final static int altoTotal = 600;
+
 	private final static int anchoJuego = 950;
 	private final static int anchoLabel = 29;
 	private final static int altoLabel = 40;
@@ -45,7 +45,8 @@ public class GUI extends JFrame{
 			public void run() {
 				try {
 					GUI frame = new GUI();
-					frame.setVisible(true);
+					new Thread(new Splash(frame)).start();
+					//frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -69,6 +70,8 @@ public class GUI extends JFrame{
 		super.setTitle("BOMBERMAN - Brunner Vercelli Volpe");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(anchoTotal, altoTotal);
+		setLocationRelativeTo(null);
+		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(0,0,0,0));
 
@@ -81,21 +84,26 @@ public class GUI extends JFrame{
 		panelJuego.setBorder(new EmptyBorder(0,0,0,0));
 		contentPane.add(panelJuego,BorderLayout.CENTER);
 		
-		juego= new Juego(this);
+
 		
 		panelInfo = new JPanel();
-		panelInfo.setLayout(new GridLayout(2,1));
-		panelInfo.setBounds(0, 0, anchoTotal-anchoJuego, anchoTotal);
+		panelInfo.setLayout(new GridLayout(1,2));
+		panelInfo.setBounds(0,0,anchoTotal-anchoJuego, anchoTotal);
+
 		panelInfo.setBorder(new EmptyBorder(0,0,0,0));
-		contentPane.add(panelInfo,BorderLayout.EAST);
+		contentPane.add(panelInfo,BorderLayout.SOUTH);
 		{
+			Font fuente=new Font("ARIAL",Font.BOLD,23);
+			
 			puntajePanel = new JPanel();
 			puntajePanel.setLayout(new FlowLayout());
 			panelInfo.add(puntajePanel,0,0);
 			puntajeLabelTitulo = new JLabel();
+			puntajeLabelTitulo.setFont(fuente);
 			puntajeLabelTitulo.setText("Puntaje: ");
 			puntajePanel.add(puntajeLabelTitulo);
 			puntajeLabelContenido = new JLabel();
+			puntajeLabelContenido.setFont(fuente);
 			puntajeLabelContenido.setText("0");
 			puntajePanel.add(puntajeLabelContenido);
 			
@@ -103,11 +111,13 @@ public class GUI extends JFrame{
 			tiempoPanel.setLayout(new FlowLayout());
 			panelInfo.add(tiempoPanel,1,0);
 			tiempoLabelTitulo = new JLabel();
-			tiempoLabelTitulo.setText("Tiempo");
+			tiempoLabelTitulo.setFont(fuente);
+			tiempoLabelTitulo.setText("Tiempo: ");
 			tiempoPanel.add(tiempoLabelTitulo);
 			tiempoLabelContenido = new JLabel();
-			tiempoLabelContenido.setText("0");
+			tiempoLabelContenido.setFont(fuente);
 			tiempoPanel.add(tiempoLabelContenido);
+			juego= new Juego(this);
 		}
 		
 		/* 
@@ -235,5 +245,10 @@ public class GUI extends JFrame{
 		puntosAct = Integer.toString(puntos);
 		puntajeLabelContenido.setText(puntosAct);
 		
+	}
+
+	public JLabel getTiempoLabelContenido() 
+	{
+		return tiempoLabelContenido;	
 	}
 }

@@ -5,6 +5,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import GUI.GUI;
+import GUI.Splash;
 import Threaders.BombaThread;
 import Threaders.EnemigoThread;
 
@@ -13,6 +14,10 @@ import Threaders.EnemigoThread;
  */
 public class Juego 
 {
+	
+
+	
+	
 	protected int puntaje;
 	protected int reloj;
 //	protected PositionList<Enemigo> listaEnemigos;
@@ -21,11 +26,13 @@ public class Juego
 	protected GUI gui;
 	protected int anchoLabel, altoLabel;
 	protected EnemigoThread hiloEnemigo;
+	protected Cronometro tiempo;
 	/**
 	 * Constructor de la clase, crea una nueva instancia de la misma.
 	 */
 	public Juego(GUI g)
 	{
+		
 		puntaje= 0;
 		terreno= new Terreno();
 		jugador= new Bomberman(terreno);
@@ -34,6 +41,8 @@ public class Juego
 		gui = g;
 		hiloEnemigo = new EnemigoThread(this);
 		hiloEnemigo.start();
+		tiempo=new Cronometro(this);
+		tiempo.crono.start();
 	}
 	
 	/**
@@ -58,6 +67,8 @@ public class Juego
 	 * Mueve al bomberman hacia arriba y actualiza la GUI
 	 */
 	public void moverBombermanUP() {
+
+		jugador.setImagen(new ImageIcon(getClass().getResource("/images/bombermanUP.jpg")));
 		jugador.avanzar(jugador.getX(), jugador.getY()-1);
 		if (jugador.getCelda() != jugador.getCeldaAnterior())
 			actualizarGUI(jugador.getCelda(),jugador.getCeldaAnterior());
@@ -72,6 +83,8 @@ public class Juego
 	 * Mueve al bomberman hacia abajo y actualiza la GUI
 	 */
 	public void moverBombermanDOWN() {
+
+		jugador.setImagen(new ImageIcon(getClass().getResource("/images/bomberman.jpg")));
 		jugador.avanzar(jugador.getX(), jugador.getY()+1);
 		if (jugador.getCelda() != jugador.getCeldaAnterior())
 			actualizarGUI(jugador.getCelda(),jugador.getCeldaAnterior());
@@ -82,6 +95,7 @@ public class Juego
 	 * Mueve al bomberman hacia la derecha y actualiza la GUI
 	 */
 	public void moverBombermanRIGHT() {
+		jugador.setImagen(new ImageIcon(getClass().getResource("/images/bombermanR.jpg")));
 		jugador.avanzar(jugador.getX()+1, jugador.getY());
 		if (jugador.getCelda() != jugador.getCeldaAnterior())
 			actualizarGUI(jugador.getCelda(),jugador.getCeldaAnterior());
@@ -93,6 +107,7 @@ public class Juego
 	 * Mueve al bomberman hacia la izquierda y actualiza la GUI
 	 */
 	public void moverBombermanLEFT() {
+		jugador.setImagen(new ImageIcon(getClass().getResource("/images/bombermanL.jpg")));
 		jugador.avanzar(jugador.getX()-1, jugador.getY());
 		if (jugador.getCelda() != jugador.getCeldaAnterior())
 			actualizarGUI(jugador.getCelda(),jugador.getCeldaAnterior());
@@ -292,6 +307,11 @@ public class Juego
 		 e.setY(c.getPosY());
 		
 	}
+	public GUI getGUI()
+	{
+		return gui;
+	}
+
 
 	
 }
