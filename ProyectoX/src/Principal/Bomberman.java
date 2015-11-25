@@ -20,11 +20,11 @@ public class Bomberman extends ElementoEnCelda
 	protected Bomba miBomba; // Prototipo de bomba
 	protected Terreno terreno;
 	protected Celda celdaAnterior;
-	
+	protected Juego juego;
 	/**
 	 * Contructor de la clase, crea una nueva instancia de la misma.
 	 */
-	public Bomberman(Terreno t)
+	public Bomberman(Juego j)
 	{
 		posX=1;
 		posY=1;
@@ -33,8 +33,9 @@ public class Bomberman extends ElementoEnCelda
 		puntaje=0;
 		cantBombasSimultaneas=1;
 		cantBombasActuales=1;
-		terreno=t;
-		miBomba=new Bomba(t);
+		terreno=j.getTerreno();
+		juego = j;
+		miBomba=new Bomba(terreno);
 		miCelda = terreno.getCelda(1, 1);
 		celdaAnterior = terreno.getCelda(1, 1);
 		imagen = new ImageIcon(getClass().getResource("/images/bomberman.jpg"));
@@ -173,7 +174,10 @@ public class Bomberman extends ElementoEnCelda
 
 	@Override
 	public int destruirse() {
-		estaVivo = false;
+		if (estaVivo()){
+			estaVivo = false;
+			//juego.terminar();
+		}
 		return 0;
 		
 	}
@@ -230,6 +234,10 @@ public class Bomberman extends ElementoEnCelda
 
 	public void setCantBombas(int i) {
 		cantBombasActuales = i;
+	}
+
+	public boolean estaVivo() {
+		return estaVivo;
 	}
 
 	

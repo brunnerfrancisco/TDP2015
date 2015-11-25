@@ -43,7 +43,7 @@ public class EnemigoThread extends Thread{
 	
 	public void run()
 	{
-		while(true){
+		while(cantEnemigos > 0){
 			try {
 
 				sleep(700);
@@ -75,11 +75,12 @@ public class EnemigoThread extends Thread{
 			
 				
 			}
-		catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-		}
+		juego.terminar();
 		
 	}
 	public void restarEnemigo() {

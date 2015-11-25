@@ -22,7 +22,7 @@ public class SplashFinal extends javax.swing.JFrame implements Runnable
 	public SplashFinal(JFrame f, boolean b) {
 		setUndecorated(true);
 		setSize(600,600);
-		//frameFinal=f;
+		frameFinal=f;
 		
 		ventanaFinal=new VentanaPuntajeFinal();
 		
@@ -56,6 +56,7 @@ public class SplashFinal extends javax.swing.JFrame implements Runnable
 				e.printStackTrace();
 		}
 		this.dispose();
+		frameFinal.dispose();
 		ventanaFinal.setVisible(true);
 		}
 	}

@@ -2,7 +2,7 @@ package Principal;
 
 public class Cronometro extends javax.swing.JFrame {  
 	 
-	int min =1, seg =0; 
+	int min =5, seg =0; 
 	Juego miJuego;
 
 	/** Creates new form NewJFrame */ 
@@ -32,7 +32,7 @@ public class Cronometro extends javax.swing.JFrame {
 						 seg=60;
 						 if(min<0)
 						 {
-							 System.out.println("Se termino el tiempo de juego!!!");
+							 miJuego.terminar();
 						 }
 					 }					
 				 }

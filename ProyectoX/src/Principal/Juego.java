@@ -6,21 +6,17 @@ import javax.swing.JLabel;
 
 import GUI.GUI;
 import GUI.Splash;
+import GUI.SplashFinal;
 import Threaders.BombaThread;
 import Threaders.EnemigoThread;
 
 /**
  * Clase principal del juego. Responsable de iniciar toda la ejecución
  */
-public class Juego 
+public class Juego
 {
-	
-
-	
-	
 	protected int puntaje;
 	protected int reloj;
-//	protected PositionList<Enemigo> listaEnemigos;
 	protected Bomberman jugador;
 	protected Terreno terreno;
 	protected GUI gui;
@@ -35,7 +31,7 @@ public class Juego
 		
 		puntaje= 0;
 		terreno= new Terreno();
-		jugador= new Bomberman(terreno);
+		jugador= new Bomberman(this);
 		//Agrego a bomberman al terreno
 		terreno.getCelda(1, 1).agregarElementoACelda(jugador);
 		gui = g;
@@ -305,12 +301,18 @@ public class Juego
 		 e.setCeldaAnterior(c);
 		 e.setX(c.getPosX());
 		 e.setY(c.getPosY());
-		
 	}
+	
 	public GUI getGUI()
 	{
 		return gui;
 	}
+
+	public void terminar() {
+			new Thread(new SplashFinal(gui,jugador.estaVivo())).start();
+			hiloEnemigo.stop();		
+	}
+	
 
 
 	
