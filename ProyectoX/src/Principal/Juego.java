@@ -15,12 +15,11 @@ import Threaders.EnemigoThread;
  */
 public class Juego
 {
-	protected int puntaje;
-	protected int reloj;
 	protected Bomberman jugador;
 	protected Terreno terreno;
 	protected GUI gui;
 	protected int anchoLabel, altoLabel;
+	protected int puntaje;
 	protected EnemigoThread hiloEnemigo;
 	protected Cronometro tiempo;
 	/**
@@ -123,7 +122,7 @@ public class Juego
 	 * Atuliza los componentes graficos de la GUI
 	 */
 	public synchronized void actualizarGUI()
-	{	
+	{	try{
 		anchoLabel = gui.getAnchoLabel();
 
 		altoLabel = gui.getAltoLabel();
@@ -150,45 +149,54 @@ public class Juego
 		}
 		gui.getPanelJuego().repaint();
 	}
+	catch (Exception e) {
+		System.out.println("error1");
+	}
+	}
 	
 	/**
 	 * Atuliza los componentes graficos de dos celdas en la GUI
 	 */
 	public synchronized void actualizarGUI(Celda c1, Celda c2) {
-		ElementoEnCelda elementoC1= c1.obtenerElem();
-		ImageIcon imagenC1;
-		if (elementoC1 == null)
-		{
-			 imagenC1= new ImageIcon(getClass().getResource("/images/Transitable.jpg"));
-		}
-		else
-		{
-			imagenC1 = elementoC1.getImagen();
+		try {
+			ElementoEnCelda elementoC1= c1.obtenerElem();
+			ImageIcon imagenC1;
+			if (elementoC1 == null)
+			{
+				 imagenC1= new ImageIcon(getClass().getResource("/images/Transitable.jpg"));
+			}
+			else
+			{
+				imagenC1 = elementoC1.getImagen();
+				
+			}
+			JLabel labelActual = gui.getLabelEnMatriz(c1.getPosX(),c1.getPosY());
 			
+			labelActual.setIcon(imagenC1);
+	//		labelActual.setBounds((c1.getPosX()*tamLabel),(c1.getPosY()*tamLabel),tamLabel,tamLabel);
+			
+			gui.getPanelJuego().add(labelActual);
+			
+			ElementoEnCelda elementoC2= c2.obtenerElem();
+			ImageIcon imagenC2;
+			if (elementoC2 == null)
+			{
+				 imagenC2= new ImageIcon(getClass().getResource("/images/Transitable.jpg"));
+			}
+			else
+			{
+				imagenC2 = elementoC2.getImagen();
+			}
+			JLabel labelActual2 = gui.getLabelEnMatriz(c2.getPosX(),c2.getPosY());
+			labelActual2.setIcon(imagenC2);
+	//		labelActual.setBounds((c2.getPosX()*tamLabel),(c2.getPosY()*tamLabel),tamLabel,tamLabel);
+			gui.getPanelJuego().add(labelActual2);
+	
+			gui.getPanelJuego().repaint();
 		}
-		JLabel labelActual = gui.getLabelEnMatriz(c1.getPosX(),c1.getPosY());
-		
-		labelActual.setIcon(imagenC1);
-//		labelActual.setBounds((c1.getPosX()*tamLabel),(c1.getPosY()*tamLabel),tamLabel,tamLabel);
-		
-		gui.getPanelJuego().add(labelActual);
-		
-		ElementoEnCelda elementoC2= c2.obtenerElem();
-		ImageIcon imagenC2;
-		if (elementoC2 == null)
-		{
-			 imagenC2= new ImageIcon(getClass().getResource("/images/Transitable.jpg"));
+		catch (Exception e) {
+			System.out.println("error2");
 		}
-		else
-		{
-			imagenC2 = elementoC2.getImagen();
-		}
-		JLabel labelActual2 = gui.getLabelEnMatriz(c2.getPosX(),c2.getPosY());
-		labelActual2.setIcon(imagenC2);
-//		labelActual.setBounds((c2.getPosX()*tamLabel),(c2.getPosY()*tamLabel),tamLabel,tamLabel);
-		gui.getPanelJuego().add(labelActual2);
-
-		gui.getPanelJuego().repaint();
 	}
 	
 

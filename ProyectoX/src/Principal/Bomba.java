@@ -30,16 +30,7 @@ public class Bomba extends ElementoEnCelda
 		imagen = new ImageIcon(getClass().getResource("/images/bomba2.gif"));
 		
 	}
-	
-	/**
-	 * Método que setea el tiempo que tarda en explotar la bomba.
-	 * @param t, de tipo entero.
-	 */
-	public void setTiempo(int t)
-	{
-		tiempo=t;
-	}
-	
+
 	/**
 	 * Método que setea el alcance de la explosión de la bomba.
 	 * @param a, de tipo entero.

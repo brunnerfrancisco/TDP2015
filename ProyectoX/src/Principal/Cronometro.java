@@ -5,8 +5,8 @@ package Principal;
  */
 public class Cronometro extends javax.swing.JFrame {  
 	 
-	int min =5, seg =0; 
-	Juego miJuego;
+	protected int min =1, seg =0; 
+	protected Juego miJuego;
 
 	/** Creates new form NewJFrame */ 
 	 public Cronometro(Juego j)
@@ -34,8 +34,8 @@ public class Cronometro extends javax.swing.JFrame {
 						 min--;
 						 seg=60;
 						 if(min<0)
-						 {
-							 miJuego.terminar();
+						 {		
+							 miJuego.getBomberman().destruirse();
 						 }
 					 }					
 				 }

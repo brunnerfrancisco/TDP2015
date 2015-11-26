@@ -5,6 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
+import Principal.BombermanController;
 import Principal.ElementoEnCelda;
 import Principal.Juego;
 import Principal.Terreno;
@@ -24,7 +25,7 @@ public class GUI extends JFrame {
 	private JPanel puntajePanel;
 	private JLabel puntajeLabelTitulo;
 	protected JLabel puntajeLabelContenido;
-	
+	BombermanController control; 
 	private Juego juego;
 	
 	private final static int cantFilas = 13;
@@ -118,6 +119,8 @@ public class GUI extends JFrame {
 			tiempoLabelContenido.setFont(fuente);
 			tiempoPanel.add(tiempoLabelContenido);
 			juego= new Juego(this);
+			control = new BombermanController(juego);
+			juego.getBomberman().setControlador(control);
 		}
 		
 		Terreno miTerreno = juego.getTerreno();
@@ -144,18 +147,9 @@ public class GUI extends JFrame {
 
 		
 		
-//	 new Thread()
-//	 {
-//		
-//		 public void run() 
-//		 {
-//			 try {
-//				Thread.sleep(2000);
-//				System.out.println("toy dormido");
-//			} catch (InterruptedException e1) {
-//				// TODO Auto-generated catch block
-//				e1.printStackTrace();
-//			}
+
+//		BombermanController control = new BombermanController(juego);
+		control.start();
 			addKeyListener(new KeyAdapter()	
 			{
 				@Override
@@ -164,31 +158,84 @@ public class GUI extends JFrame {
 					switch(e.getKeyCode()) {
 					
 					case KeyEvent.VK_UP:
-						juego.moverBombermanUP();
+						control.up = true;
+						//juego.moverBombermanUP();
 						break;
 						
 					case KeyEvent.VK_DOWN:	
-						juego.moverBombermanDOWN();
+						control.down = true;
+//						juego.moverBombermanDOWN();
 						break;
 						
 					case KeyEvent.VK_RIGHT:	
-						juego.moverBombermanRIGHT();
+						control.der = true;
+//						juego.moverBombermanRIGHT();
 						break;
 						
 					case KeyEvent.VK_LEFT:	
-						juego.moverBombermanLEFT();
+						control.izq = true;
+//						juego.moverBombermanLEFT();
 						break;
 					
 	
 					case KeyEvent.VK_SPACE:
 						juego.ponerBomba();
 						break;
-					
 					}
 				
 		
 		
-				}});
+				}
+				public void keyReleased(KeyEvent e) {
+					// TODO Auto-genera tedmethod stub
+					switch(e.getKeyCode()) {
+					
+					case KeyEvent.VK_UP:
+						control.up = false;
+						//juego.moverBombermanUP();
+						break;
+						
+					case KeyEvent.VK_DOWN:	
+						control.down = false;
+//						juego.moverBombermanDOWN();
+						break;
+						
+					case KeyEvent.VK_RIGHT:	
+						control.der = false;
+//						juego.moverBombermanRIGHT();
+						break;
+						
+					case KeyEvent.VK_LEFT:	
+						control.izq = false;
+//						juego.moverBombermanLEFT();
+						break;
+	
+				}
+			
+			
+			
+			
+			
+			
+			
+			
+			}
+			}
+			
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					);
 	
 			}
 //	 };
@@ -219,6 +266,10 @@ public class GUI extends JFrame {
 	public int getAltoLabel() 
 	{
 		return altoLabel;
+	}
+	public Juego getJuego()
+	{
+		return juego;
 	}
 	public void actualizarPuntaje(int p) 
 	{

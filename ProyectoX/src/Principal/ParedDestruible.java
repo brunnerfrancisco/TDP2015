@@ -39,6 +39,7 @@ public class ParedDestruible extends Pared
 			b.setX(super.miCelda.getPosX());
 			b.setY(super.miCelda.getPosY());
 			b.setCelda(super.miCelda);
+			b.setCeldaAnterior(celdaAnterior);
 			miCelda.agregarElementoACelda(b);
 			celdaAnterior.eliminarElementoEnCelda();
 		}
@@ -55,6 +56,7 @@ public class ParedDestruible extends Pared
 			e.setX(super.miCelda.getPosX());
 			e.setY(super.miCelda.getPosY());
 			e.setCelda(super.miCelda);
+			e.setCeldaAnterior(celdaAnterior);
 			miCelda.agregarElementoACelda(e);
 			celdaAnterior.eliminarElementoEnCelda();
 		}

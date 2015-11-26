@@ -7,6 +7,9 @@ import java.awt.Frame;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Principal.Cronometro;
+
 import javax.swing.JLabel;
 import java.awt.Rectangle;
 import javax.swing.JButton;
@@ -63,6 +66,8 @@ public class VentanaMenu extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 
 				//OYENTE DEL BOTON JUGAR
+//				tiempo=new Cronometro(this);
+//				tiempo.crono.start();
 				frame.setVisible(true);
 				dispose();
 			}

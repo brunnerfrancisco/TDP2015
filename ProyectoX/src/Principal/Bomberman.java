@@ -21,6 +21,7 @@ public class Bomberman extends ElementoEnCelda
 	protected Terreno terreno;
 	protected Celda celdaAnterior;
 	protected Juego juego;
+	protected BombermanController miControlador;
 	/**
 	 * Contructor de la clase, crea una nueva instancia de la misma.
 	 */
@@ -39,6 +40,7 @@ public class Bomberman extends ElementoEnCelda
 		miCelda = terreno.getCelda(1, 1);
 		celdaAnterior = terreno.getCelda(1, 1);
 		imagen = new ImageIcon(getClass().getResource("/images/bomberman.jpg"));
+		
 		
 	}
 	
@@ -206,6 +208,8 @@ public class Bomberman extends ElementoEnCelda
 	 */
 	public void setVelocidad(int velocidadNueva) {
 		velocidad = velocidadNueva;
+		miControlador.restarTiempo();
+		
 	}
 
 	/**
@@ -289,5 +293,9 @@ public class Bomberman extends ElementoEnCelda
 	 */
 	public boolean estaVivo() {
 		return estaVivo;
+	}
+
+	public void setControlador(BombermanController control) {
+		miControlador = control;
 	}	
 }

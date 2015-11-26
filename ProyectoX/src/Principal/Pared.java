@@ -5,7 +5,7 @@ package Principal;
  *
  */
 public abstract class Pared extends ElementoEnCelda {
-	protected Celda miCelda;
+	protected Celda miCelda; // No deberia ir tampoco el metodo.
 	
 	/**
 	 * Obtiene la celda donde esta el elemento

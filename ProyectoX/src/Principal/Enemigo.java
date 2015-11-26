@@ -10,7 +10,6 @@ import javax.swing.ImageIcon;
 public abstract class Enemigo extends ElementoEnCelda
 {
 
-	protected int velocidad;
 	protected boolean modoDios;
 	protected int posX;
 	protected int posY;
@@ -26,15 +25,7 @@ public abstract class Enemigo extends ElementoEnCelda
 		
 	}
 	
-	/**
-	 * Método que devuelve la velocidad del enemigo.
-	 * @return velocidad
-	 */
-	public int getVel()
-	{
-		return velocidad;
-	}
-	
+
 	/**
 	 * Método responsable del avance de los enemigos.
 	 */
@@ -56,17 +47,17 @@ public abstract class Enemigo extends ElementoEnCelda
 		return posY;
 	}
 
-	public Celda getCelda() {
+	public Celda getCelda()
+	{
 		return super.miCelda;
 	}
 
-	public boolean modoDios() {
+	public boolean modoDios()
+	{
 		return modoDios;
 	}
 	
-	public void avanzar(Enemigo e) {
-	
-	}
+	public void avanzar(Enemigo e) {}
 	
 	public void avanzar(Bomberman b) {
 		if (!b.modoDios())

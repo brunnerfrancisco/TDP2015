@@ -46,7 +46,7 @@ public class EnemigoThread extends Thread{
 		while(cantEnemigos > 0){
 			try {
 
-				sleep(700);
+				sleep(30);
 				if (miSirius !=null){
 					miSirius.avanzar();
 					if (miSirius.getCelda() != miSirius.getCeldaAnterior())
@@ -55,16 +55,17 @@ public class EnemigoThread extends Thread{
 				}
 				for (Altair a: misAltair)
 				{
+					sleep(100);
 					if (a != null){
 						a.avanzar();
 						if (a.getCelda() != a.getCeldaAnterior()){
-						//	juego.actualizarGUI(a.getCelda(), a.getCeldaAnterior());
-							juego.actualizarGUI();
+							juego.actualizarGUI(a.getCelda(), a.getCeldaAnterior());
+							//juego.actualizarGUI();
 						}
 					}
 				}
 				for (Rugulus r: misRugulus)
-				{
+				{   sleep(100);
 					if (r!=null){
 						r.avanzar();	
 						if (r.getCelda() != r.getCeldaAnterior()){
@@ -79,6 +80,9 @@ public class EnemigoThread extends Thread{
 			catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			}
+			catch (Exception e) {
+				System.out.println("error");
 			}
 		}
 		juego.terminar();
