@@ -11,6 +11,7 @@ public class ParedDestruible extends Pared
 	public ParedDestruible(Celda c)
 	{
 		this.miCelda = c;
+		imagen = new ImageIcon(getClass().getResource("/images/paredDestruible.jpg"));
 	}
 	
 	/**
@@ -49,5 +50,7 @@ public class ParedDestruible extends Pared
 			celdaAnterior.eliminarElementoEnCelda();
 		}
 	}
+	
+	
 	
 }

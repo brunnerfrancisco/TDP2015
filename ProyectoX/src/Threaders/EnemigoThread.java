@@ -57,8 +57,7 @@ public class EnemigoThread extends Thread{
 					if (a != null){
 						a.avanzar();
 						if (a.getCelda() != a.getCeldaAnterior()){
-							juego.actualizarGUI(a.getCelda());
-							juego.actualizarGUI(a.getCeldaAnterior());
+							juego.actualizarGUI(a.getCelda(), a.getCeldaAnterior());
 						}
 					}
 				}

@@ -60,8 +60,31 @@ public class Terreno
 		}
 		//Pongo los PowerUp sobre celdas transitables
 		 this.agregarPowerUps();
+		 this.agregarParedesDestruibles();
+		 
 		 
 		
+	}
+
+	private void agregarParedesDestruibles() {
+		int espaciosTransitables = 237;
+		int cantParedes = (int)(espaciosTransitables*50/100);
+		for (int i = 0; i < cantParedes; i++)
+		{
+			Random rnd  = new Random();
+			
+				 int fila = 1+rnd.nextInt(29);
+				 int col = 1+rnd.nextInt(11);
+				 while(((fila % 2 == 0) && (col % 2 == 0)) || (fila < 9 && col < 5))
+				 {
+					  fila = 1+rnd.nextInt(29);
+					  col = 1+rnd.nextInt(11);
+				 }
+			 	
+				 Celda c = this.getCelda(fila,col);
+				 ParedDestruible pared = new ParedDestruible(c);
+			 	 c.agregarElementoACelda(pared);	
+		}
 	}
 
 	private void agregarPowerUps() {
