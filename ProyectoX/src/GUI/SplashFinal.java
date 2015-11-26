@@ -16,12 +16,12 @@ public class SplashFinal extends javax.swing.JFrame implements Runnable
 	JFrame frameFinal;
 	VentanaMenu inicio;
 	VentanaPuntajeFinal ventanaFinal;
-	ImageIcon imagenGana=new ImageIcon("C:/Users/Lea/Desktop/Foto0153.jpg");
-	ImageIcon imagenPerdio=new ImageIcon("C:/Users/Lea/Desktop/Foto0153.jpg");
+	ImageIcon imagenGana=new ImageIcon(getClass().getResource("/images/gano.jpg"));
+	ImageIcon imagenPerdio=new ImageIcon(getClass().getResource("/images/perdio.jpg"));
 	
 	public SplashFinal(JFrame f, boolean b) {
 		setUndecorated(true);
-		setSize(600,600);
+		setSize(920,600);
 		frameFinal=f;
 		
 		ventanaFinal=new VentanaPuntajeFinal();
@@ -30,11 +30,11 @@ public class SplashFinal extends javax.swing.JFrame implements Runnable
 		setContentPane(panel);
 		panel.setLayout(null);
 		panel.setBackground(Color.ORANGE);
-		panel.setBounds(0, 0, 600, 600);
+		panel.setBounds(0, 0, 920, 600);
 		panel.setLayout(null);
 		
 		labelSplash = new JLabel("");
-		labelSplash.setBounds(0, 0, 600, 600);
+		labelSplash.setBounds(0, 0, 920, 600);
 		if(b) { labelSplash.setIcon(imagenGana); }
 		else { labelSplash.setIcon(imagenPerdio);}
 			
@@ -50,7 +50,7 @@ public class SplashFinal extends javax.swing.JFrame implements Runnable
 		this.setVisible(true);
 		try 
 		{
-			t.sleep(2000);
+			t.sleep(4000);
 		} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -17,7 +17,7 @@ public class Splash extends javax.swing.JFrame implements Runnable
 	
 	public Splash(JFrame f) {
 		setUndecorated(true);
-		setSize(600,600);
+		setSize(920,600);
 		frame=f;
 		inicio = new VentanaMenu(f);
 
@@ -25,11 +25,11 @@ public class Splash extends javax.swing.JFrame implements Runnable
 		setContentPane(panel);
 		panel.setLayout(null);
 		panel.setBackground(Color.ORANGE);
-		panel.setBounds(0, 0, 600, 600);
+		panel.setBounds(0, 0, 920, 600);
 		panel.setLayout(null);
 		
 		labelSplash = new JLabel("");
-		labelSplash.setBounds(0, 0, 600, 600);
+		labelSplash.setBounds(0, 0,920, 600);
 		labelSplash.setIcon(new ImageIcon(getClass().getResource("/images/sega.jpg")));
 		panel.add(labelSplash);
 		getContentPane().setVisible(true);

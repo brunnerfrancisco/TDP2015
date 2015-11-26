@@ -176,7 +176,7 @@ public class Bomberman extends ElementoEnCelda
 	public int destruirse() {
 		if (estaVivo()){
 			estaVivo = false;
-			//juego.terminar();
+			juego.terminar();
 		}
 		return 0;
 		
