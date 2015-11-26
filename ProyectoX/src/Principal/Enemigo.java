@@ -69,7 +69,8 @@ public abstract class Enemigo extends ElementoEnCelda
 	}
 	
 	public void avanzar(Bomberman b) {
-		b.destruirse();
+		if (!b.modoDios())
+			b.destruirse();
 	}
 
 	public boolean estaVivo() {

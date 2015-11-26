@@ -91,44 +91,30 @@ public class Celda
 	public synchronized void avanzar(Bomberman b)
 	{		
 		if (obtenerElem() == null) // celda vacia
-			{
-//				int posXAnteriorBomberman = b.getX();
-//				int posYAnteriorBomberman = b.getY();
-//				b.setX(posX);
-//				b.setY(posY);
-//				b.setCelda(this);
-//				this.agregarElementoACelda(b);
-//				terreno.getCelda(posXAnteriorBomberman, posYAnteriorBomberman).eliminarElementoEnCelda();
-//				System.out.println(this.posX+ " y pos y" + posY);
-			Celda celdaAnterior = b.getCelda(); // PUEDE SER QUE TENGAMOS Q MANEJAR LOS POSX POS Y COMO EN CELDA
+		{
+			Celda celdaAnterior = b.getCelda(); 
 			b.setX(posX);
 			b.setY(posY);
 			b.setCelda(this);
 			b.setCeldaAnterior(celdaAnterior);
 			this.agregarElementoACelda(b);
 			celdaAnterior.eliminarElementoEnCelda();
-			}
+		}
 		else
 		{
 			obtenerElem().avanzar(b); // Llamo a avanzar del elemento en celda con bomberman 
 		}
 	}
 	
-	
+	/**
+	 * Agrega al enemigo como elemento de la celda en caso de ser posible
+	 * @param b
+	 */
 	public synchronized void avanzar(Enemigo e)
 	{
 		if (obtenerElem() == null) // celda vacia
 		{
-//			Celda celdaAnterior = e.getCelda(); // PUEDE SER QUE TENGAMOS Q MANEJAR LOS POSX POS Y COMO EN CELDA
-//			
-//			e.setX(posX);
-//			e.setY(posY);
-//			e.setCelda(this);
-//			this.agregarElementoACelda(e);
-//			e.setCeldaAnterior(celdaAnterior);
-//			celdaAnterior.eliminarElementoEnCelda();
-//			System.out.println(celdaAnterior.obtenerElem() == null);
-			Celda celdaAnterior = e.getCelda(); // PUEDE SER QUE TENGAMOS Q MANEJAR LOS POSX POS Y COMO EN CELDA
+			Celda celdaAnterior = e.getCelda(); 
 			e.setX(posX);
 			e.setY(posY);
 			e.setCelda(this);

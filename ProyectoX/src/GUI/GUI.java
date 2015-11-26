@@ -9,7 +9,7 @@ import Principal.ElementoEnCelda;
 import Principal.Juego;
 import Principal.Terreno;
 
-public class GUI extends JFrame{
+public class GUI extends JFrame {
 
 	private JPanel contentPane;
 	private JPanel panelInfo;
@@ -120,38 +120,6 @@ public class GUI extends JFrame{
 			juego= new Juego(this);
 		}
 		
-		/* 
-		JPanel panel_1 = new JPanel(new GridLayout(34,34));
-		panel_1.setBackground(Color.BLACK);
-		JPanel panel = new JPanel();
-		panel.setBounds(150, 150, 1024, 1024);
-		panel.setLayout(null);
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 481, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 481, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 278, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
-		panel_1.setAlignmentX(0);
-		lblNewLabel = new JLabel("New label");
-		//lblNewLabel.setIcon(icon);
-		lblNewLabel.setBounds(58, 100, 81, 14);
-		panel_1.setLayout(null);
-		panel_1.add(lblNewLabel);
-		
-		*/
-		
 		Terreno miTerreno = juego.getTerreno();
 		ImageIcon imagenCelda;
 		for (int i = 0; i <cantColumnas; i++)
@@ -174,42 +142,57 @@ public class GUI extends JFrame{
 			}
 		}
 
-		addKeyListener(new KeyAdapter()	
-		{
-			@Override
-			public void keyPressed(KeyEvent e) {
-				// TODO Auto-genera tedmethod stub
-				switch(e.getKeyCode()) {
+		
+		
+//	 new Thread()
+//	 {
+//		
+//		 public void run() 
+//		 {
+//			 try {
+//				Thread.sleep(2000);
+//				System.out.println("toy dormido");
+//			} catch (InterruptedException e1) {
+//				// TODO Auto-generated catch block
+//				e1.printStackTrace();
+//			}
+			addKeyListener(new KeyAdapter()	
+			{
+				@Override
+				public void keyPressed(KeyEvent e) {
+					// TODO Auto-genera tedmethod stub
+					switch(e.getKeyCode()) {
+					
+					case KeyEvent.VK_UP:
+						juego.moverBombermanUP();
+						break;
+						
+					case KeyEvent.VK_DOWN:	
+						juego.moverBombermanDOWN();
+						break;
+						
+					case KeyEvent.VK_RIGHT:	
+						juego.moverBombermanRIGHT();
+						break;
+						
+					case KeyEvent.VK_LEFT:	
+						juego.moverBombermanLEFT();
+						break;
+					
+	
+					case KeyEvent.VK_SPACE:
+						juego.ponerBomba();
+						break;
+					
+					}
 				
-				case KeyEvent.VK_UP:
-				// LO PONGO EN AVANZAR DE BOMB	lblNewLabel.setBounds(lblNewLabel.getX(), lblNewLabel.getY()-10, lblNewLabel.getWidth(), lblNewLabel.getHeight());
-					//bomberman.avanzar(bomberman.getX(), bomberman.getY()+1);
-					juego.moverBombermanUP();
-					break;
-					
-				case KeyEvent.VK_DOWN:	
-					// LO PONGO EN AVANZAR DE BOMB	lblNewLabel.setBounds(lblNewLabel.getX(), lblNewLabel.getY()+10, lblNewLabel.getWidth(), lblNewLabel.getHeight());
-					juego.moverBombermanDOWN();
-					break;
-					
-				case KeyEvent.VK_RIGHT:	
-					// LO PONGO EN AVANZAR DE BOMB	lblNewLabel.setBounds(lblNewLabel.getX()+10, lblNewLabel.getY(), lblNewLabel.getWidth(), lblNewLabel.getHeight());
-					juego.moverBombermanRIGHT();
-					break;
-					
-				case KeyEvent.VK_LEFT:	
-					// LO PONGO EN AVANZAR DE BOMB	lblNewLabel.setBounds(lblNewLabel.getX()-10, lblNewLabel.getY(), lblNewLabel.getWidth(), lblNewLabel.getHeight());
-					juego.moverBombermanLEFT();
-					break;
-				
-
-				case KeyEvent.VK_SPACE:
-					juego.ponerBomba();
-					break;
-				}
+		
+		
+				}});
+	
 			}
-		});
-	}
+//	 };
+//	 }
 	/**
 	 * Retorna el JLabel correspondiente a la posicion i, j de la matriz de JLabel
 	 * @param i fila de la matriz de JLabel

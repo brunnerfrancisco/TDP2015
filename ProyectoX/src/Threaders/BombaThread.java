@@ -2,7 +2,10 @@ package Threaders;
 import javax.swing.ImageIcon;
 
 import Principal.*;
-
+/**
+ * @author Brunner Francisco, Vercelli Franco, Volpe Leandro.
+ *
+ */
 public class BombaThread extends Thread
 {
 	private Bomberman bomberman;
@@ -29,9 +32,7 @@ public class BombaThread extends Thread
 			Bomba miBomba = bomberman.ponerBomba();
 			miBomba.setAlcance(bomberman.getBomba().getAlcance());
 			juego.actualizarGUI();
-			
 			sleep(3000);
-//			Bomba miBomba = bomberman.getBomba();
 			int puntos = explotar(miBomba.getX(),miBomba.getY(), miBomba);
 			juego.actualizarGUI();
 			sleep(400);
@@ -42,21 +43,23 @@ public class BombaThread extends Thread
 			juego.quitarEnemigo();
 			juego.actualizarGUI();
 			
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} catch (InterruptedException e) {	e.printStackTrace();}
 	}
 	
+	/**
+	 * Crea una explosion, y afecta a las celdas cercanas, devuelve los puntos obtenidos en la explosion.
+	 * @param x
+	 * @param y
+	 * @param miBomba
+	 * @return puntos
+	 * @throws InterruptedException
+	 */
 	public int explotar(int x, int y,Bomba miBomba) throws InterruptedException{
-//		int x = miBomba.getX();
-//		int y = miBomba.getY();
 		int alcance = miBomba.getAlcance();
-
+		t.getCelda(x, y).obtenerElem().destruirse();
 	    t.getCelda(x, y).eliminarElementoEnCelda();
 		
 		int puntos = 0;
-		ImageIcon imagenAnterior;
 		Celda celda;
 		ElementoEnCelda elementoCelda;
 		ExplosionGrafica exp; 
@@ -65,16 +68,18 @@ public class BombaThread extends Thread
 		while (i<=(x+alcance)&&(!destrui))
 		{	xPos++;
 			celda = t.getCelda(i, y);
-			elementoCelda =celda.obtenerElem();
-			if(elementoCelda!=null)
-			{
-				puntos = puntos + elementoCelda.destruirse();
-				destrui = true; // Ya rompi una pared destruible o algo hay q sacar los powerup
-				
-			}
-			exp = new ExplosionGrafica();
-			celda.agregarElementoACelda(exp);
-			i++;
+			
+				elementoCelda =celda.obtenerElem();
+				if(elementoCelda!=null)
+				{
+					puntos = puntos + elementoCelda.destruirse();
+					destrui = true;
+					
+				}
+				exp = new ExplosionGrafica();
+				celda.agregarElementoACelda(exp);
+				i++;
+			
 		}
 		i=x-1;
 		destrui=false;
@@ -82,15 +87,17 @@ public class BombaThread extends Thread
 		{
 			xNeg++;
 			celda = t.getCelda(i, y);
-			elementoCelda =celda.obtenerElem();
-			if(elementoCelda!=null)
-			{
-				puntos = puntos + elementoCelda.destruirse();
-				destrui=true;
-			}
-			exp = new ExplosionGrafica();
-			celda.agregarElementoACelda(exp);
-			i--;
+		
+				elementoCelda =celda.obtenerElem();
+				if(elementoCelda!=null)
+				{
+					puntos = puntos + elementoCelda.destruirse();
+					destrui=true;
+				}
+				exp = new ExplosionGrafica();
+				celda.agregarElementoACelda(exp);
+				i--;
+			
 		}
 		int j=y+1;
 		destrui=false;
@@ -130,7 +137,25 @@ public class BombaThread extends Thread
 		
 	}
 
+	/**
+	 * Nos dice si el elemento en la celda, es una pared no destruible.
+	 * @param x
+	 * @param y
+	 * @return toR
+	 */
+	private boolean EsParedNoDestruible(int x, int y) {
+		boolean toR = false;
+		if (x == 0 || y == 0 || x == 11 || y == 30)
+			toR = true;
+		return toR;
+	}
 
+	/**
+	 * Quita las explosiones graficas, en las celdas cercanas
+	 * @param x
+	 * @param y
+	 * @param miBomba
+	 */
 	private void quitarExplosiones(int x, int y, Bomba miBomba) {
 		Celda celda;
 		ElementoEnCelda elementoCelda;
@@ -160,38 +185,6 @@ public class BombaThread extends Thread
 			celda=t.getCelda(x, j);
 			elementoCelda=celda.obtenerElem();
 			celda.eliminarElementoEnCelda();
-		}
-		
-//		for(int i = y+1; i < x+xNeg; i++)
-//		{
-//				celda = t.getCelda(x, j);
-//				elementoCelda= celda.obtenerElem();
-//			if(	elementoCelda!=null)
-//			{
-//				puntos = puntos + elementoCelda.destruirse();
-//				destrui=true;
-//			}
-//
-//			exp = new ExplosionGrafica(1);
-//			celda.agregarElementoACelda(exp);
-//			j++;
-//		}
-//		j=y-1;
-//		destrui=false;
-//		while (j>=(y-alcance)&&(destrui))
-//		{
-//			celda = t.getCelda(x, j);
-//			elementoCelda= celda.obtenerElem();
-//			if(	elementoCelda!=null)
-//			{
-//				puntos = puntos + elementoCelda.destruirse();
-//				destrui=true;
-//			}
-//
-//			exp = new ExplosionGrafica(1);
-//			celda.agregarElementoACelda(exp);
-//			j--;
-//		}
-//		
+		}	
 	}
 }

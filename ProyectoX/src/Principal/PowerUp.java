@@ -1,13 +1,21 @@
 package Principal;
 
+/**
+ * 
+ * @author Brunner Francisco, Vercelli Franco, Volpe Leandro.
+ *
+ */
 public abstract class PowerUp extends ElementoEnCelda
 {
 
 	public abstract void avanzar(Bomberman b);
 	
+	/**
+	 * Avanza a un enemigo, a la celda donde esta el power up, sin afectarlo
+	 */
 	public void avanzar (Enemigo e)
 	{
-		Celda celdaAnterior = e.getCelda();// PUEDE SER QUE TENGAMOS Q MANEJAR LOS POSX POS Y COMO EN CELDA
+		Celda celdaAnterior = e.getCelda();
 		e.setX(super.miCelda.getPosX());
 		e.setY(super.miCelda.getPosY());
 		e.setCelda(super.miCelda);
@@ -16,8 +24,5 @@ public abstract class PowerUp extends ElementoEnCelda
 		e.setCeldaAnterior(celdaAnterior);
 	}
 	
-	public int destruirse()
-	{
-		return 0;
-	}
+	public int destruirse()	{	return 0; }
 }

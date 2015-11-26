@@ -6,7 +6,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.Rectangle;
-
+/**
+ * @author Brunner Francisco, Vercelli Franco, Volpe Leandro.
+ *
+ */
 public class Splash extends javax.swing.JFrame implements Runnable
 {
 	Thread t;

@@ -1,7 +1,11 @@
 package Principal;
 
 import javax.swing.ImageIcon;
-
+/**
+ * 
+ * @author Brunner Francisco, Vercelli Franco, Volpe Leandro.
+ *
+ */
 public class ParedDestruible extends Pared 
 {
 	/**
@@ -15,7 +19,8 @@ public class ParedDestruible extends Pared
 	}
 	
 	/**
-	 * 
+	 * Quita la pared de la celda.
+	 * return 10
 	 */
 	public int destruirse()
 	{
@@ -24,7 +29,7 @@ public class ParedDestruible extends Pared
 	}
 	
 	/**
-	 * Metodo responsable de avanzar a un bomberman en caso de que el bomerman este en modo Dios
+	 * avanza a un bomberman en caso de que el bomerman este en modo Dios
 	 * @param b
 	 */
 	public void avanzar(Bomberman b) {
@@ -38,7 +43,11 @@ public class ParedDestruible extends Pared
 			celdaAnterior.eliminarElementoEnCelda();
 		}
 	}
-	@Override
+
+	/**
+	 * avanza a un enemigo en caso de que sea Sirius
+	 * @param e
+	 */
 	public void avanzar(Enemigo e) {
 		if (e.modoDios())
 		{	Celda celdaAnterior = e.getCelda();// PUEDE SER QUE TENGAMOS Q MANEJAR LOS POSX POS Y COMO EN CELDA

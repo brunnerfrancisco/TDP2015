@@ -3,7 +3,11 @@ package Principal;
 import java.util.Random;
 
 import javax.swing.ImageIcon;
-
+/**
+ * 
+ * @author Brunner Francisco, Vercelli Franco, Volpe Leandro.
+ *
+ */
 public class Sirius extends Enemigo {
 	
 	protected Bomberman jugador;
@@ -14,10 +18,11 @@ public class Sirius extends Enemigo {
 		modoDios = false;
 		estaVivo = true;
 		jugador = b;
-		
-		
 	}
 	
+	/**
+	 * Decide donde avanza sirius persiguiendo a bomberman.
+	 */
 	public void avanzar() {
 		 Random  rnd = new Random();
 		 int direccion = rnd.nextInt(2);
@@ -42,9 +47,8 @@ public class Sirius extends Enemigo {
 				celdaAAvanzar = terreno.getCelda(posX, yEnem-1);
 			celdaAAvanzar.avanzar(this);
 		}
-		
-		
 	}
+	
 	private void avanzarEnX() {
 		int xBomb = jugador.getX();
 		int xEnem = posX;
@@ -60,8 +64,12 @@ public class Sirius extends Enemigo {
 			celdaAAvanzar.avanzar(this);
 		}
 		
-	}
-	@Override
+	}	
+	
+	/**
+	 * Quita el elemento de la celda, lo setea en muerto para que luego 
+	 * juego lo quite, y devuelve la cantidad de puntos.
+	 */
 	public int destruirse() {
 		super.miCelda.eliminarElementoEnCelda();
 		estaVivo = false;

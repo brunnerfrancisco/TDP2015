@@ -51,13 +51,15 @@ public class EnemigoThread extends Thread{
 					miSirius.avanzar();
 					if (miSirius.getCelda() != miSirius.getCeldaAnterior())
 						juego.actualizarGUI(miSirius.getCelda(), miSirius.getCeldaAnterior());
+						//juego.actualizarGUI();
 				}
 				for (Altair a: misAltair)
 				{
 					if (a != null){
 						a.avanzar();
 						if (a.getCelda() != a.getCeldaAnterior()){
-							juego.actualizarGUI(a.getCelda(), a.getCeldaAnterior());
+						//	juego.actualizarGUI(a.getCelda(), a.getCeldaAnterior());
+							juego.actualizarGUI();
 						}
 					}
 				}

@@ -18,15 +18,15 @@ public class SpeedUp extends PowerUp
 		super.imagen = new ImageIcon(getClass().getResource("/images/speedUp.jpg"));
 	}
 
-	@Override
+	/**
+	 * Afecta a bomberman duplicando su velocidad y elimina el power up de la celda
+	 */
 	public void avanzar(Bomberman b) {
 		int velocidadNueva = b.getVelocidad() *2;
 		b.setVelocidad(velocidadNueva);
 		super.miCelda.eliminarElementoEnCelda(); // Saco el PowerUP
 		b.addPuntos(30);
 		super.miCelda.avanzar(b);
-		//VEEEEEEEEER SI FUNCA O NO
-		
 	}
 
 }

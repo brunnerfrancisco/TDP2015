@@ -86,104 +86,14 @@ public class Bomba extends ElementoEnCelda
 	}
 	
 	
-	
-	/**
-	 * Método que maneja la explosión de las bombas.
-	 */
-/*	public int explotar(int x, int y)
-	{
-		
-		    terreno.getCelda(x, y).eliminarElementoEnCelda();
-			int i=x;
-			int puntos = 0;
-			boolean destrui=true;
-			ElementoEnCelda elementoCelda;
-			while (i<=(x+alcance)&&(destrui))
-			{
-				elementoCelda =terreno.getCelda(i, y).obtenerElem();
-				if(elementoCelda!=null)
-				{
-					puntos = puntos + elementoCelda.destruirse();
-					if(elementoCelda!=null)
-					{
-						destrui=false;
-					}
-				}
-				
-				i++;
-			}
-			i=x;
-			destrui=true;
-			while (i>=(x-alcance)&&(destrui))
-			{
-				elementoCelda =terreno.getCelda(i, y).obtenerElem();
-				if(elementoCelda!=null)
-				{
-					puntos = puntos + elementoCelda.destruirse();
-					if(	elementoCelda!=null)
-					{
-						destrui=false;
-					}
-				}
-				i--;
-			}
-			int j=y;
-			destrui=true;
-			while (j<=(y+alcance)&&(destrui))
-			{
-					elementoCelda=terreno.getCelda(x, j).obtenerElem();
-				if(	elementoCelda!=null)
-				{
-					puntos = puntos + elementoCelda.destruirse();
-					if(	elementoCelda!=null)
-					{
-						destrui=false;
-					}
-				}
-				j++;
-			}
-			j=y;
-			destrui=true;
-			while (j>=(y-alcance)&&(destrui))
-			{
-				elementoCelda=terreno.getCelda(x, j).obtenerElem();
-				if(	elementoCelda!=null)
-				{
-					puntos = puntos + elementoCelda.destruirse();
-					if(elementoCelda!=null)
-					{
-						destrui=false;
-					}
-				}
-				j--;
-			}
-			
-					
-		return puntos;
-	}
-	**/
-	
-	
-	/**
-	 * 
-	 */
 	public void avanzar (Enemigo e){}
 	
-	/**
-	 * 
-	 */
 	public void avanzar (Bomberman b){}
 	
-	/**
-	 * 
-	 */
-	public int destruirse()
-	{
-		return 0;
-	}
+	public int destruirse()	{	return 0;	}
 	
 	/**
-	 * 
+	 * Setea la coordenada x de la bomba.
 	 * @param posX
 	 */
 	public void setPosX(int posX) {
@@ -197,7 +107,11 @@ public class Bomba extends ElementoEnCelda
 	public void setPosY(int posY) {
 		this.posY = posY;
 	}
-
+	
+	/**
+	 * Setea el alcance de la bomba
+	 * @param a, alcance nuevo
+	 */
 	public void setAlcance(int a) {
 		alcance=a;
 		

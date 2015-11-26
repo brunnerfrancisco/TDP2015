@@ -61,11 +61,11 @@ public class Terreno
 		//Pongo los PowerUp sobre celdas transitables
 		 this.agregarPowerUps();
 		 this.agregarParedesDestruibles();
-		 
-		 
-		
 	}
 
+	/**
+	 * Crea paredes destruibles, y las inserta en el terreno
+	 */
 	private void agregarParedesDestruibles() {
 		int espaciosTransitables = 237;
 		int cantParedes = (int)(espaciosTransitables*50/100);
@@ -87,6 +87,9 @@ public class Terreno
 		}
 	}
 
+	/**
+	 * Crea power-ups y los inserta en el terreno
+	 */
 	private void agregarPowerUps() {
 		 PowerUp [] misPowerUps = new PowerUp[11];
 		 misPowerUps[0] = new SpeedUp();

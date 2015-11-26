@@ -18,6 +18,9 @@ public class Fatality extends PowerUp
 		super.imagen = new ImageIcon(getClass().getResource("/images/fatality.jpg"));
 	}
 	
+	/**
+	 * Duplica el alcance de las bombas de bomberman, y elimina el power up de la celda
+	 */
 	public void avanzar(Bomberman b)
 	{
 		b.duplicarAlcance();

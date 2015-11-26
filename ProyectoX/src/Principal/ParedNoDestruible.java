@@ -1,7 +1,11 @@
 package Principal;
 
 import javax.swing.ImageIcon;
-
+/**
+ * 
+ * @author Brunner Francisco, Vercelli Franco, Volpe Leandro.
+ *
+ */
 public class ParedNoDestruible extends Pared {
 	/**
 	 * Constructor de la clase, crea una nueva instancia de la misma.
@@ -29,29 +33,13 @@ public class ParedNoDestruible extends Pared {
 			
 	}
 
-	
-	
+	@Override
+	public int destruirse() {	return 0;}
 
 	@Override
-	public int destruirse() {
-		return 0;
-		
-	}
-
-
+	public void avanzar(Bomberman b) {}
 
 	@Override
-	public void avanzar(Bomberman b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public void avanzar(Enemigo e) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void avanzar(Enemigo e) {}
 
 }

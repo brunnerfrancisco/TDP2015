@@ -1,5 +1,8 @@
 package Principal;
-
+/**
+ * @author Brunner Francisco, Vercelli Franco, Volpe Leandro.
+ *
+ */
 public class Cronometro extends javax.swing.JFrame {  
 	 
 	int min =5, seg =0; 

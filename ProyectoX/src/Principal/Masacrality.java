@@ -21,6 +21,9 @@ public class Masacrality extends PowerUp
 		super.imagen = new ImageIcon(getClass().getResource("/images/masacrality.jpg"));
 	}
 	
+	/**
+	 * Afecta permitiendole el modo dios a bomberman y elimina el power up de la celda
+	 */
 	public void avanzar(Bomberman b)
 	{
 		MasacThread hilo = new MasacThread(b);

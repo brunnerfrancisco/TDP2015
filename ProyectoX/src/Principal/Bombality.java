@@ -17,6 +17,10 @@ public class Bombality extends PowerUp
 		super.imagen = new ImageIcon(getClass().getResource("/images/bombality.jpg"));
 	}
 
+	/**
+	 * Aumenta la cantidad de bombas simultaneas de bomberman y elimina el power
+	 * up de la celda
+	 */
 	public void avanzar(Bomberman b)
 	{
 		b.aumentarCantBombas();

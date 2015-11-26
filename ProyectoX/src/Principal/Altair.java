@@ -3,26 +3,27 @@ package Principal;
 import java.util.Random;
 
 import javax.swing.ImageIcon;
-
+/**
+ * 
+ * @author Brunner Francisco, Vercelli Franco, Volpe Leandro.
+ *
+ */
 public class Altair extends Enemigo{
 	protected int posEnAltair;
-	public Altair(Terreno t, int p)//, int x, int y)
+	public Altair(Terreno t, int p)
 	{
 		terreno = t;
-//		posX = x;
-//		posY = y;
 		imagen = new ImageIcon(getClass().getResource("/images/Altair.jpg"));
 		modoDios = true;
 		posEnAltair = p;
 		estaVivo = true;
-//		miCelda = terreno.getCelda(posX, posY);
 	}
 	
 	
 	
 
 	@Override
-	/* Si direccion es 0, intenta avanzar hacia Arriba.
+	/** Si direccion es 0, intenta avanzar hacia Arriba.
 	 * Si direccion es 1, intenta avanzar hacia Abajo.
 	 * Si direccion es 2, intenta avanzar hacia Izquierda.
 	 * Si direccion es 3, intenta avanzar hacia Derecha.
@@ -42,7 +43,10 @@ public class Altair extends Enemigo{
 		 celdaAAvanzar.avanzar(this);
 	}
 
-	@Override
+	/**
+	 * Quita el elemento de la celda, lo setea en muerto para que luego 
+	 * juego lo quite, y devuelve la cantidad de puntos.
+	 */
 	public int destruirse() {
 		super.miCelda.eliminarElementoEnCelda();
 		estaVivo = false;
@@ -52,7 +56,10 @@ public class Altair extends Enemigo{
 
 
 
-
+	/**
+	 * Devuelve la posicion en el arreglo de altair, para luego eliminarlo
+	 * @return posEnAltair
+	 */
 	public int getPosEnAltair() {
 		return posEnAltair;
 	}

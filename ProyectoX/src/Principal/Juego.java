@@ -111,7 +111,9 @@ public class Juego
 	}
 	
 	
-	
+	/**
+	 * Atuliza el componente grafico de puntaje
+	 */
 	public void actualizarPuntaje() {
 		gui.actualizarPuntaje(jugador.getPuntos());
 		
@@ -149,6 +151,9 @@ public class Juego
 		gui.getPanelJuego().repaint();
 	}
 	
+	/**
+	 * Atuliza los componentes graficos de dos celdas en la GUI
+	 */
 	public synchronized void actualizarGUI(Celda c1, Celda c2) {
 		ElementoEnCelda elementoC1= c1.obtenerElem();
 		ImageIcon imagenC1;
@@ -186,6 +191,32 @@ public class Juego
 		gui.getPanelJuego().repaint();
 	}
 	
+
+	/**
+	 * Atuliza los componentes graficos de una celda en la GUI
+	 */
+	public synchronized void actualizarGUI(Celda c1) {
+		ElementoEnCelda elementoC1= c1.obtenerElem();
+		ImageIcon imagenC1;
+		if (elementoC1 == null)
+		{ 
+			 imagenC1= new ImageIcon(getClass().getResource("/images/Transitable.jpg"));
+		}
+		else
+		{
+			imagenC1 = elementoC1.getImagen();
+			if (imagenC1 == null)
+				System.out.println("NO HAY IMAGEN");
+			
+		}
+		JLabel labelActual = gui.getLabelEnMatriz(c1.getPosX(),c1.getPosY());
+		
+		labelActual.setIcon(imagenC1);
+		gui.getPanelJuego().add(labelActual);
+		gui.getPanelJuego().repaint();
+		
+	}
+	
 	/**
 	 * Pone una bomba en el terreno en la celda actual del bomberman
 	 */
@@ -199,6 +230,10 @@ public class Juego
 		
 	}
 
+	/**
+	 * Agrega un Enemigo al juego
+	 * @param e tipo Enemigo
+	 */
 	public void agregarEnemigo(Enemigo e) {
 		 Random  rnd = new Random();
 		 int fila = 1+rnd.nextInt(29);
@@ -217,42 +252,24 @@ public class Juego
 		 
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public synchronized void actualizarGUI(Celda c1) {
-		ElementoEnCelda elementoC1= c1.obtenerElem();
-		ImageIcon imagenC1;
-		if (elementoC1 == null)
-		{ 
-			 imagenC1= new ImageIcon(getClass().getResource("/images/Transitable.jpg"));
-		}
-		else
-		{
-			imagenC1 = elementoC1.getImagen();
-			if (imagenC1 == null)
-				System.out.println("NO HAY IMAGEN");
-			
-		}
-		JLabel labelActual = gui.getLabelEnMatriz(c1.getPosX(),c1.getPosY());
-		
-		labelActual.setIcon(imagenC1);
-	//	labelActual.setBounds((c1.getPosX()*tamLabel),(c1.getPosY()*tamLabel),tamLabel,tamLabel);
-		gui.getPanelJuego().add(labelActual);
-
-		gui.getPanelJuego().repaint();
-		
+	/**
+	 * Agrega un enemigo de tipo Sirius
+	 * @param e tipo Sirius
+	 * @param i posicion "X" a insertar
+	 * @param j posicion "Y" a insertar
+	 */
+	public void agregarEnemigo(Sirius e, int i, int j) {
+		 Celda c = terreno.getCelda(i,j);
+	 	 c.agregarElementoACelda(e);
+		 e.setCelda(c);
+		 e.setCeldaAnterior(c);
+		 e.setX(c.getPosX());
+		 e.setY(c.getPosY());
 	}
 
+	/**
+	 *  Quita los enemigos que se murieron luego de la explosion de la bomba
+	 */
 	public synchronized void quitarEnemigo() {
 		Rugulus[] mR = hiloEnemigo.getMisRugulus();
 		int pos = 0;
@@ -294,26 +311,22 @@ public class Juego
 		}
 	}
 
-	public void agregarEnemigo(Sirius e, int i, int j) {
-		 Celda c = terreno.getCelda(i,j);
-	 	 c.agregarElementoACelda(e);
-		 e.setCelda(c);
-		 e.setCeldaAnterior(c);
-		 e.setX(c.getPosX());
-		 e.setY(c.getPosY());
-	}
 	
+	/**
+	 * Retorna la GUI entera
+	 * @return gui
+	 */
 	public GUI getGUI()
 	{
 		return gui;
 	}
 
+	/**
+	 * Termina la ejecucion del juego
+	 */
 	public void terminar() {
-			new Thread(new SplashFinal(gui,jugador.estaVivo())).start();
+			SplashFinal splash = new SplashFinal(gui,jugador.estaVivo(),jugador.getPuntos());
+			new Thread(splash).start();
 			hiloEnemigo.stop();		
 	}
-	
-
-
-	
 }

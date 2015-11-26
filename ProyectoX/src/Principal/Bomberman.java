@@ -98,7 +98,12 @@ public class Bomberman extends ElementoEnCelda
 		return puntaje;
 	}
 	
-	
+	/**
+	 * Obtiene la celda a avanzar, y intenta avanzar utilizando el avanzar definido en celda.
+	 * 
+	 * @param x, coordenada x de la celda a avanzar
+	 * @param y, coordenada y de la celda a avanzar
+	 */
 	public void avanzar(int x, int y)
 	{
 		terreno.getCelda(x,y).avanzar(this);	
@@ -122,7 +127,7 @@ public class Bomberman extends ElementoEnCelda
 	}
 	
 	/**
-	 * 
+	 * Aumenta la cantidad de bombas
 	 */
 	public void agregarBomba()
 	{
@@ -131,7 +136,7 @@ public class Bomberman extends ElementoEnCelda
 	
 	/**
 	 * Retorna la bomba del bomberman
-	 * @return
+	 * @return miBomba
 	 */
 	public Bomba getBomba()
 	{
@@ -156,23 +161,29 @@ public class Bomberman extends ElementoEnCelda
 		cantBombasActuales++;
 	}
 
+	/**
+	 * Obtiene la cantidad de bombas simultaneas
+	 * @return cantBombasSimultaneas
+	 */
 	public int getSimultaneas()
 	{
 		return cantBombasSimultaneas;
 	}
-	@Override
-	public void avanzar(Bomberman b) {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
+	
+	public void avanzar(Bomberman b) {}
+
+	/**
+	 * Si un enemigo avanza a la celda de bomberman, lo mata
+	 */
 	public void avanzar(Enemigo e) {
 		this.destruirse();
 		
 	}
 
-	@Override
+	/**
+	 * Termina la ejecucion del juego al "morir" bomberman
+	 */
 	public int destruirse() {
 		if (estaVivo()){
 			estaVivo = false;
@@ -188,19 +199,35 @@ public class Bomberman extends ElementoEnCelda
 	public int obtenerCantBombas() {
 		return cantBombasActuales;
 	}
-
+	
+	/**
+	 * Setea una nueva velocidad a bomberman
+	 * @param velocidadNueva
+	 */
 	public void setVelocidad(int velocidadNueva) {
 		velocidad = velocidadNueva;
 	}
 
+	/**
+	 * Obtiene la velocidad de bomberman
+	 * @return velocidad
+	 */
 	public int getVelocidad() {
 		return velocidad;
 	}
 
+	/**
+	 * Obtiene la celda de bomberman
+	 * @return miCelda
+	 */
 	public Celda getCelda() {
 		return miCelda;
 	}
 
+	/**
+	 * Obtiene si bomberman esta en modo Dios o no
+	 * @return modoDios
+	 */
 	public boolean modoDios() {
 		return modoDios;
 	}
@@ -214,33 +241,53 @@ public class Bomberman extends ElementoEnCelda
 			puntaje+=p;
 	}
 
+	/**
+	 * Obtiene la celda anterior en la que estuvo bomberman
+	 * @return celdaAnterior
+	 */
 	public Celda getCeldaAnterior() {
 		return celdaAnterior;
 	}
 
+	/**
+	 * Setea la celda anterior despues de un movimiento
+	 * @param c
+	 */
 	public void setCeldaAnterior(Celda c) {
 		celdaAnterior = c;
 		
 	}
 
+	/**
+	 * Setea la cantidad de bombas simultaneas que puede poner
+	 * @param i
+	 */
 	public void setSimultaneas(int i) {
 		cantBombasSimultaneas = i;
 		
 	}
 
+	/**
+	 * Setea en true o false el modo dios.
+	 * @param b
+	 */
 	public void setDios(boolean b) {
 		modoDios=b;
 	}
 
+	/**
+	 * Setea la cantidad de bombas
+	 * 
+	 */
 	public void setCantBombas(int i) {
 		cantBombasActuales = i;
 	}
 
+	/**
+	 * 
+	 * @return estaVivo
+	 */
 	public boolean estaVivo() {
 		return estaVivo;
-	}
-
-	
-
-	
+	}	
 }

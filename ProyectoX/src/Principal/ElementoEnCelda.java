@@ -26,6 +26,11 @@ public abstract class ElementoEnCelda
 	public ImageIcon getImagen() {
 		return imagen;
 	}
+	
+	/**
+	 * Setea una imagen al elemento en celda
+	 * @param i
+	 */
 	public void setImagen(ImageIcon i)
 	{
 		imagen = i;

@@ -3,12 +3,16 @@ package Principal;
 import java.util.Random;
 
 import javax.swing.ImageIcon;
-
+/**
+ * 
+ * @author Brunner Francisco, Vercelli Franco, Volpe Leandro.
+ *
+ */
 public class Rugulus  extends Enemigo{
 
-	// CUANDO SE AGREGA EN JUEGO A TERRENO HAY Q SETEAR X,Y Y LA CELDA
+	
 	protected int posEnRugulus;
-	public Rugulus(Terreno t, int p)//, int x, int y)
+	public Rugulus(Terreno t, int p)
 	{
 		terreno = t;
 		imagen = new ImageIcon(getClass().getResource("/images/Rugulus.jpg"));
@@ -18,7 +22,10 @@ public class Rugulus  extends Enemigo{
 		
 	}
 	
-	@Override
+	/**
+	 * Quita el elemento de la celda, lo setea en muerto para que luego 
+	 * juego lo quite, y devuelve la cantidad de puntos.
+	 */
 	public int destruirse() {
 		super.miCelda.eliminarElementoEnCelda();
 		estaVivo = false;
@@ -26,11 +33,7 @@ public class Rugulus  extends Enemigo{
 		
 	}
 
-
-
-
-	@Override
-	/* Si direccion es 0, intenta avanzar hacia Arriba.
+	/** Si direccion es 0, intenta avanzar hacia Arriba.
 	 * Si direccion es 1, intenta avanzar hacia Abajo.
 	 * Si direccion es 2, intenta avanzar hacia Izquierda.
 	 * Si direccion es 3, intenta avanzar hacia Derecha.
@@ -54,10 +57,12 @@ public class Rugulus  extends Enemigo{
 		 celdaAAvanzar.avanzar(this);
 	}
 
+	/**
+	 * Devuelve la posicion en el arreglo de rugulus, para luego eliminarlo
+	 * @return posEnRugulus
+	 */
 	public int getPosEnRugulus() {
 		return posEnRugulus;
+
 	}
-
-	
-
 }
